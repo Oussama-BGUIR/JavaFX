@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4FC031;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.MenuController">
+    <stylesheets>
+        <URL value="@menu.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="266.0" layoutY="32.0" prefHeight="18.0" prefWidth="177.0" text="liste des menus" />
+      <TextField layoutX="436.0" layoutY="29.0" promptText="recherche" />
+      <ListView fx:id="AffichageListeMenusBackfx" layoutX="262.0" layoutY="74.0" prefHeight="312.0" prefWidth="323.0" />
+      <AnchorPane prefHeight="400.0" prefWidth="245.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="88.0" layoutY="236.0" mnemonicParsing="false" onAction="#ajouterMenuBack" text="Ajouter" />
+            <Button layoutX="85.0" layoutY="287.0" mnemonicParsing="false" onAction="#modifierMenuBack" text="Modifier" />
+            <Button layoutX="83.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimerMenuBack" text="Supprimer" />
+            <ImageView fitHeight="179.0" fitWidth="178.0" layoutX="34.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/elitegym.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
