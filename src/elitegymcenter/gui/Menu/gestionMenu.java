@@ -45,7 +45,7 @@ public class gestionMenu extends Application {
         */
      
      try {
-            Parent root = FXMLLoader.load(getClass().getResource("AjouterMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Gestion Menu");

@@ -60,7 +60,7 @@ public class MenuController implements Initializable {
 
     @FXML
     private void modifierMenuBack(ActionEvent event) {
-      /*
+      
         ListView<Menu> list = AffichageListeMenusBackfx;
         MenuCRUD inter = new ServiceMenuCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
@@ -79,7 +79,7 @@ public class MenuController implements Initializable {
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("/edu/worshop/gui/modifierAbonnementBack.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("../gui/Menu/ModifierMenu.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -87,11 +87,11 @@ public class MenuController implements Initializable {
           
         } catch (IOException ex) {
             System.out.println("Erreur\n");
-            Logger.getLogger(AfficherAbonnementBackController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         
-    */
+    
     }
 
 
@@ -101,7 +101,7 @@ public class MenuController implements Initializable {
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("elitegymcenter/gui/Menu/AjouterMenu.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("../gui/Menu/AjouterMenu.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
