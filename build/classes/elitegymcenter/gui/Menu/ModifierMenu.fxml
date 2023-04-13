@@ -11,12 +11,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.ModifierMenuController">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.ModifierMenuController">
     <stylesheets>
         <URL value="@ajoutermenu.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="modifiernomMenu" layoutX="390.0" layoutY="70.0" onKeyReleased="#verifiernom"  prefHeight="32.0" prefWidth="242.0" promptText="Nom">
+      <TextField fx:id="modifiernomMenu" layoutX="390.0" layoutY="70.0" onKeyReleased="#verifiernom" prefHeight="32.0" prefWidth="242.0" promptText="Nom">
          <font>
             <Font size="17.0" />
          </font></TextField>
@@ -58,9 +58,9 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="500.0" prefWidth="242.0" style="-fx-background-color: #2A303D;">
+      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="530.0" prefWidth="242.0" style="-fx-background-color: #2A303D;">
          <children>
-            <ImageView fitHeight="256.0" fitWidth="200.0" layoutX="21.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="222.0" fitWidth="215.0" layoutX="13.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/elitegym.jpg" />
                </image>

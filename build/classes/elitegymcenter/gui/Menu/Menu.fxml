@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="900.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.MenuController">
     <stylesheets>
         <URL value="@menu.css" />
     </stylesheets>
@@ -19,9 +19,9 @@
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font></Label>
-      <TextField layoutX="458.0" layoutY="22.0" prefHeight="36.0" prefWidth="229.0" promptText="Recherche" />
-      <ListView fx:id="AffichageListeMenusBackfx" layoutX="242.0" layoutY="81.0" prefHeight="383.0" prefWidth="454.0" />
-      <AnchorPane prefHeight="500.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+      <TextField layoutX="495.0" layoutY="22.0" prefHeight="36.0" prefWidth="229.0" promptText="Recherche" />
+      <ListView fx:id="AffichageListeMenusBackfx" layoutX="242.0" layoutY="81.0" prefHeight="400.0" prefWidth="651.0" />
+      <AnchorPane prefHeight="519.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
          <children>
             <Button layoutX="39.0" layoutY="265.0" mnemonicParsing="false" onAction="#ajouterMenuBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
             <Button layoutX="39.0" layoutY="320.0" mnemonicParsing="false" onAction="#modifierMenuBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
@@ -33,5 +33,10 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Button layoutX="767.0" layoutY="19.0" mnemonicParsing="false" onAction="#GoToPlat" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #2A303D;" text="Go To Menu Plat" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

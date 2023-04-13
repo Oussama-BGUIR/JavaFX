@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package elitegymcenter.controllers.Menu;
+package elitegymcenter.controllers.Plat;
 
-import elitegymcenter.entities.Menu;
-import elitegymcenter.interfaces.MenuCRUD;
-import elitegymcenter.services.ServiceMenuCRUD;
+
+import elitegymcenter.entities.Plat;
+
+import elitegymcenter.interfaces.PlatCRUD;
+import elitegymcenter.services.ServicePlatCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -30,12 +32,12 @@ import javafx.stage.Stage;
  *
  * @author ousam
  */
-public class MenuController implements Initializable {
+public class PlatController implements Initializable {
 
     @FXML
-    private ListView<Menu> AffichageListeMenusBackfx;
-    static Menu M = new Menu();
-    static int id, calorie;
+    private ListView<Plat> AffichageListePlatBackfx;
+    static Plat P = new Plat();
+    static int id,menu_id , prix, calorie;
     static boolean disponibilite;
     static String nom,description ,image;
 
@@ -49,40 +51,42 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         // TODO
-        ListView<Menu> list1 = AffichageListeMenusBackfx;
-        MenuCRUD inter = new ServiceMenuCRUD();
-        List<Menu> list2 = inter.afficherMenu();
+        ListView<Plat> list1 = AffichageListePlatBackfx;
+        PlatCRUD inter = new ServicePlatCRUD();
+        List<Plat> list2 = inter.afficherPlat();
         for (int i = 0; i < list2.size(); i++) 
         {
-            Menu M = list2.get(i);
-            list1.getItems().add(M); // add Evenement to ListView
+            Plat P = list2.get(i);
+            list1.getItems().add(P); // add Evenement to ListView
         } 
         
     }     
         
 
     @FXML
-    private void modifierMenuBack(ActionEvent event) {
+    private void modifierPlatBack(ActionEvent event) {
       
-        ListView<Menu> list = AffichageListeMenusBackfx;
-        MenuCRUD inter = new ServiceMenuCRUD();
+        ListView<Plat> list = AffichageListePlatBackfx;
+        PlatCRUD inter = new ServicePlatCRUD();
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         
 
-        Menu m = list.getSelectionModel().getSelectedItem();
+        Plat m = list.getSelectionModel().getSelectedItem();
  
        
        
         String nom = m.getNom();
+        int prix = m.getPrix();
+        int menu_id = m.getMenu_id();
         String description = m.getDescription();
         int calorie = m.getCalorie();
-        boolean disponibilite = m.getDisponibilite();
+        boolean disponibilte = m.getDisponibilte();
         String image = m.getImage();
-        M=m;
+        P=m;
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Menu/ModifierMenu.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Plat/ModifierPlat.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -90,7 +94,7 @@ public class MenuController implements Initializable {
           
         } catch (IOException ex) {
             System.out.println("Erreur\n");
-            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlatController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         
@@ -99,12 +103,12 @@ public class MenuController implements Initializable {
 
 
     @FXML
-    private void ajouterMenuBack(ActionEvent event) {
+    private void ajouterPlatBack(ActionEvent event) {
         
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Menu/AjouterMenu.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Plat/AjouterPlat.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -112,7 +116,7 @@ public class MenuController implements Initializable {
           
         } catch (IOException ex) {
             System.out.println("Erreur\n");
-            Logger.getLogger(AjouterMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AjouterPlatController.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     
@@ -120,19 +124,19 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void supprimerMenuBack(ActionEvent event) {
+    private void supprimerPlatBack(ActionEvent event) {
         
     
-        ListView<Menu> list = (ListView<Menu>) AffichageListeMenusBackfx;
-        MenuCRUD inter = new ServiceMenuCRUD();
+      ListView<Plat> list = AffichageListePlatBackfx;
+        PlatCRUD inter = new ServicePlatCRUD();
 
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            Menu M = list.getSelectionModel().getSelectedItem();
-            inter.supprimerMenu(M.getId());
+            Plat P = list.getSelectionModel().getSelectedItem();
+            inter.supprimerPlat(P.getId());
             list.getItems().remove(selectedIndex);
         } else {
-            showAlert("sélectionner un menu pour le supprimer ");
+            showAlert("sélectionner un plat pour le supprimer ");
         }
          
     }
@@ -146,12 +150,12 @@ public class MenuController implements Initializable {
         alert.showAndWait();
     }
     
-                @FXML
-        public void GoToPlat(ActionEvent event) throws IOException{        
-        root = FXMLLoader.load(getClass().getResource("../../gui/Plat/Plat.fxml"));
+            @FXML
+        public void GoToMenu(ActionEvent event) throws IOException{        
+        root = FXMLLoader.load(getClass().getResource("../../gui/Menu/Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setTitle("ListOPlat");
+        stage.setTitle("ListMenu");
         stage.setScene(scene);
         stage.show();
                 

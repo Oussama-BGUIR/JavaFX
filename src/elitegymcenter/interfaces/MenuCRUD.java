@@ -6,6 +6,7 @@
 package elitegymcenter.interfaces;
 
 import elitegymcenter.entities.Menu;
+import elitegymcenter.entities.Plat;
 import java.util.List;
 
 /**
@@ -17,5 +18,6 @@ public interface MenuCRUD {
     public List<Menu> afficherMenu();
      public void supprimerMenu(int id);
      public void modifierMenu(Menu M);
+
     
 }
