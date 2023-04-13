@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/gui/Menu/AjouterMenu.fxml</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/services/ServiceFicheCRUD.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/controllers/AjouterRdvController.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/images/elitegym%20without%20background.png</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/services/ServiceRdvCRUD.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/controllers/ModifierRdvController.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/utils/MyDB.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/images/elitegym.jpg</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/entities/Rdv.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/gui/Menu/Menu.fxml</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/gui/Menu/gestionMenu.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/gui/Menu/ajoutermenu.css</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegym/elitegym.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/controllers/RdvController.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/interfaces/FicheCRUD.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/gui/Menu/modifiermenu.css</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/entities/Fiche.java</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/gui/Menu/ModifierMenu.fxml</file>
+            <file>file:/C:/Users/user/Downloads/JavaFX-oussama/JavaFX-oussama/src/elitegymcenter/interfaces/RdvCRUD.java</file>
+        </group>
+    </open-files>
+</project-private>
