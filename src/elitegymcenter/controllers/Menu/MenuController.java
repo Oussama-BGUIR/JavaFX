@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package elitegymcenter.controllers;
+package elitegymcenter.controllers.Menu;
 
 import elitegymcenter.entities.Menu;
 import elitegymcenter.interfaces.MenuCRUD;
@@ -79,7 +79,7 @@ public class MenuController implements Initializable {
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("../gui/Menu/ModifierMenu.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Menu/ModifierMenu.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -101,7 +101,7 @@ public class MenuController implements Initializable {
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("../gui/Menu/AjouterMenu.fxml"));
+            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Menu/AjouterMenu.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

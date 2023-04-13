@@ -8,21 +8,25 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4FC031;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.MenuController">
     <stylesheets>
         <URL value="@menu.css" />
     </stylesheets>
    <children>
-      <Label layoutX="266.0" layoutY="32.0" prefHeight="18.0" prefWidth="177.0" text="liste des menus" />
-      <TextField layoutX="436.0" layoutY="29.0" promptText="recherche" />
-      <ListView fx:id="AffichageListeMenusBackfx" layoutX="262.0" layoutY="74.0" prefHeight="312.0" prefWidth="323.0" />
-      <AnchorPane prefHeight="400.0" prefWidth="245.0" style="-fx-background-color: #2A303D;">
+      <Label layoutX="253.0" layoutY="22.0" prefHeight="36.0" prefWidth="200.0" text="liste des menus">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Label>
+      <TextField layoutX="458.0" layoutY="22.0" prefHeight="36.0" prefWidth="229.0" promptText="Recherche" />
+      <ListView fx:id="AffichageListeMenusBackfx" layoutX="242.0" layoutY="81.0" prefHeight="383.0" prefWidth="454.0" />
+      <AnchorPane prefHeight="500.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
          <children>
-            <Button layoutX="88.0" layoutY="236.0" mnemonicParsing="false" onAction="#ajouterMenuBack" text="Ajouter" />
-            <Button layoutX="85.0" layoutY="287.0" mnemonicParsing="false" onAction="#modifierMenuBack" text="Modifier" />
-            <Button layoutX="83.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimerMenuBack" text="Supprimer" />
-            <ImageView fitHeight="179.0" fitWidth="178.0" layoutX="34.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="39.0" layoutY="265.0" mnemonicParsing="false" onAction="#ajouterMenuBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
+            <Button layoutX="39.0" layoutY="320.0" mnemonicParsing="false" onAction="#modifierMenuBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="39.0" layoutY="375.0" mnemonicParsing="false" onAction="#supprimerMenuBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/elitegym.jpg" />
                </image>

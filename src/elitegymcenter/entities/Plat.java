@@ -13,15 +13,15 @@ package elitegymcenter.entities;
  */
 public class Plat {
     private int id , menu_id , calorie , prix ;
-    private boolean disponibilite ;
+    private boolean disponibilte ;
     private String nom , description , image ;
     
 
-        public Plat(int menu_id, int calorie, int prix, boolean disponibilite, String nom, String description, String image) {
+        public Plat(int menu_id, int calorie, int prix, boolean disponibilte, String nom, String description, String image) {
         this.menu_id = menu_id;
         this.calorie = calorie;
         this.prix = prix;
-        this.disponibilite = disponibilite;
+        this.disponibilte = disponibilte;
         this.nom = nom;
         this.description = description;
         this.image = image;
@@ -32,7 +32,7 @@ public class Plat {
         this.menu_id = menu_id;
         this.calorie = calorie;
         this.prix = prix;
-        this.disponibilite = disponibilite;
+        this.disponibilte = disponibilte;
         this.nom = nom;
         this.description = description;
         this.image = image;
@@ -77,12 +77,12 @@ public class Plat {
         this.prix = prix;
     }
 
-    public boolean getDisponibilite() {
-        return disponibilite;
+    public boolean getDisponibilte() {
+        return disponibilte;
     }
 
-    public void setDisponibilite(boolean disponibilite) {
-        this.disponibilite = disponibilite;
+    public void setDisponibilte(boolean disponibilte) {
+        this.disponibilte = disponibilte;
     }
 
     public String getNom() {
@@ -120,16 +120,9 @@ public class Plat {
 
     @Override
     public String toString() {
-        return "Plat{" + "id=" + id +  ", menu_id=" + menu_id +  ", nom=" + nom + ", description=" + description + ", calorie=" + calorie + ", prix=" + prix + ", desponibilite=" + disponibilite + ", image=" + image + '}';
+        return "Plat{" + "id=" + id +  ", menu_id=" + menu_id +  ", nom=" + nom + ", description=" + description + ", calorie=" + calorie + ", prix=" + prix + ", desponibilte=" + disponibilte + ", image=" + image + '}';
     }
-    /*
-   @Override
-    public String toString() {
-        return "Reservation{" + "id=" + id + ", evenement_id=" + evenement_id + ", paiement=" + paiement + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", telephone=" + telephone +  '}';
-    }
-    */
-    
-
-        
+   
+       
      
 }

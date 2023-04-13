@@ -28,8 +28,8 @@ public class elitegym {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //// MyDB conn = MyDB.getInstance();
-        //Plat p1 = new Plat(5, 555 , 5000 , true , "testJava", "c'est un test pour voir l'enregistrement" , "image de test ecriture" );
+         MyDB conn = MyDB.getInstance();
+        Plat p1 = new Plat(5, 555 , 5000 , true , "testJava", "c'est un test pour voir l'enregistrement" , "image de test ecriture" );
         Menu testjava = new Menu(3, "test java" , " c'est un test " , " photo de test ");
 
         // Evenement1CRUD event = new Evenement1CRUD();
@@ -54,36 +54,42 @@ public class elitegym {
     public static void main(String[] args) {
 
     // Création d'un objet de la classe Menu
-   // Menu testjava666 = new Menu(1000 , true , "oussama" , "oussamaoussamaoussamaoussama" , "oussamaoussama");
-    
+    //////Plat p1 = new Plat(4, 1000 , 5000  ,false , "oussama" , "oussamaoussamaoussamaoussama" , "oussamaoussama");
   //////////////////////////// Menu oussssssss = new Menu(10323 , false , "bguir" , "bguirbguir" , "bgggg");
+   //////// Plat p2 = new Plat(4, 123 , 123  ,true , "hhhhhhh" , "hhhhhhhhhhhhhhhhhh" , "hhhhhhhhhhhhh");
 
 
     // Création d'un objet de la classe ServiceMenuCRUD
-    ServiceMenuCRUD res = new ServiceMenuCRUD(); 
-      
+  ////////////////////  ServiceMenuCRUD res = new ServiceMenuCRUD(); 
+    ServicePlatCRUD res = new ServicePlatCRUD(); 
+
         
     // Appel de la méthode ajouterMenu pour ajouter un menu à la base de données
    ////////////////////////// res.ajouterMenu(oussssssss);
+   ////////res.ajouterPlat(p2);
 
     // Appel de la méthode afficherMenu pour afficher tous les menus dans la base de données
     
     //////////////////////  System.err.println(res.afficherMenu()); /////////////////
       
-      
-    /*List<Menu> listeMenus = res.afficherMenu();
-    for (Menu menu : listeMenus) {
-        System.out.println(menu);
-    }
-*/
+          //////////////////////  System.err.println(res.afficherMenu()); /////////////////
+      /////////// System.err.println(res.afficherPlat()); /////////////////
+
+   
 
     // Appel de la méthode supprimerMenu pour supprimer un menu de la base de données
    ////////////////// int idMenuASupprimer = 6 ; // ID du menu à supprimer
   //////////////////   res.supprimerMenu(idMenuASupprimer);
-
+    //////////// int idPlatASupprimer = 4 ; // ID du menu à supprimer
+    ///////////  res.supprimerPlat(idPlatASupprimer);
+  
+  
+  
     // Appel de la méthode modifierMenu pour modifier un menu dans la base de données
     /////////////// Menu menuAModifier = new Menu(7, 500000 , false , "lina", "liiiiiiiinaaaaaaaaaa", "liiiiiiiiiinaaaaaaaaaaaaa");
    ///////////////  res.modifierMenu(menuAModifier);
+      Plat platAModifier = new Plat (6, 12 , 4444, 4444  ,true , "test" , "tesssssssssstttt" , "teeesssssttttt");
+      res.modifierPlat(platAModifier);
 }
     
 }

@@ -3,25 +3,103 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.ModifierMenuController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.ModifierMenuController">
     <stylesheets>
         <URL value="@ajoutermenu.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="modifiernomMenu" layoutX="249.0" layoutY="74.0" />
-      <TextField fx:id="modifierdescriptionMenu" layoutX="250.0" layoutY="131.0" />
-      <TextField fx:id="modifiercalorieMenu" layoutX="250.0" layoutY="187.0" />
-      <TextField fx:id="modifierimageMenu" layoutX="250.0" layoutY="241.0" />
-      <Button layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#modifiermenu" text="Modifier" />
-      <Text layoutX="183.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOM" />
-      <Text layoutX="157.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPTION" />
-      <Text layoutX="183.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CALORIE" />
-      <Text layoutX="186.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMAGE" />
-      <Text layoutX="160.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilite" />
-      <CheckBox fx:id="modifierdisponibiliteMenu" layoutX="250.0" layoutY="301.0" mnemonicParsing="false" text="CheckBox" />
+      <TextField fx:id="modifiernomMenu" layoutX="390.0" layoutY="70.0" onKeyReleased="#verifiernom"  prefHeight="32.0" prefWidth="242.0" promptText="Nom">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <TextField fx:id="modifierdescriptionMenu" layoutX="390.0" layoutY="138.0" onKeyReleased="#verifierDesc" prefHeight="38.0" prefWidth="242.0" promptText="DESCRIPTION">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="modifiercalorieMenu" layoutX="390.0" layoutY="207.0" onKeyReleased="#verifierCal" prefHeight="38.0" prefWidth="242.0" promptText="CALORIE">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <TextField fx:id="modifierimageMenu" layoutX="390.0" layoutY="276.0" onKeyReleased="#verifierImg" prefHeight="32.0" prefWidth="242.0" promptText="IMAGE">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Text layoutX="342.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOM">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="289.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPTION">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="322.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CALORIE">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="333.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMAGE">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="386.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilite">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <CheckBox fx:id="modifierdisponibiliteMenu" layoutX="516.0" layoutY="346.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" text="CheckBox" />
+      <Label fx:id="labelnom" layoutX="390.0" layoutY="107.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="500.0" prefWidth="242.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <ImageView fitHeight="256.0" fitWidth="200.0" layoutX="21.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/elitegym.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button layoutX="340.0" layoutY="379.0" mnemonicParsing="false" onAction="#modifiermenu" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #2A303D;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="labeldescription" layoutX="390.0" layoutY="176.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelcalorie" layoutX="391.0" layoutY="245.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelimage" layoutX="391.0" layoutY="310.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="checknom" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdescription" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkcalorie" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkimage" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="250.0" layoutY="18.0" text="Modifier un Menu" textFill="#2a303d">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="340.0" layoutY="433.0" mnemonicParsing="false" onAction="#switchToList" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #2A303D;" text="Retour au Liste" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
