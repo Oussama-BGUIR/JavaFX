@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.ModifierAbonnementBackController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="nomAbonnementModifierfx" layoutX="421.0" layoutY="187.0" />
+            <Text layoutX="263.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+            <Text layoutX="264.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+            <Text layoutX="263.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" />
+            <Text layoutX="263.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="89.12420654296875" />
+            <Text layoutX="263.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="89.12420654296875" />
+            <TextField fx:id="prenomAbonnementModifierfx" layoutX="421.0" layoutY="231.0" />
+            <TextField fx:id="numeroAbonnementModifierfx" layoutX="421.0" layoutY="272.0" />
+            <TextField fx:id="emailAbonnementModifierfx" layoutX="421.0" layoutY="315.0" />
+            <ChoiceBox fx:id="typeAbonnementModifierfx" layoutX="420.0" layoutY="360.0" prefWidth="150.0" />
+            <Button layoutX="452.0" layoutY="428.0" mnemonicParsing="false" onAction="#modiferAbonnementBack" text="Modifier" />
+            <Text layoutX="432.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier un abonnement" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
