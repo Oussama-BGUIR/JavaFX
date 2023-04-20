@@ -89,14 +89,14 @@ public class ModifierMenuController implements Initializable {
             }
         }
         if (nbNonChar == 0 && modifiernomMenu.getText().trim().length() >=5) {
-            labelnom.setText ("nom valide ");
+            labelnom.setText ("nom valide :) ");
             labelnom.setTextFill(Color.GREEN);
             checknom.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelnom.setText ("Check nom !!! ");
+            labelnom.setText ("le nom doit etre plus que 5 lettres !");
             labelnom.setTextFill(Color.RED);
             checknom.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -112,7 +112,7 @@ public class ModifierMenuController implements Initializable {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && modifierdescriptionMenu.getText().trim().length() >=10) {
+        if (nbNonChar == 0 && modifierdescriptionMenu.getText().trim().length() >=20) {
             labeldescription.setText ("Description valide :) ");
             labeldescription.setTextFill(Color.GREEN);
             checkdescription.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
@@ -120,7 +120,7 @@ public class ModifierMenuController implements Initializable {
 
             // verificationUserNom = true;
         } else {
-            labeldescription.setText ("Check Description !!! ");
+            labeldescription.setText ("écrivez plus que 20 lettres !");
             labeldescription.setTextFill(Color.RED);
             checkdescription.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -137,7 +137,7 @@ public class ModifierMenuController implements Initializable {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && modifiercalorieMenu.getText().trim().length() >=3) {
+        if (nbNonChar == 0 && modifiercalorieMenu.getText().trim().length() >=4) {
             labelcalorie.setText ("Calorie valide :) ");
             labelcalorie.setTextFill(Color.GREEN);
             checkcalorie.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
@@ -145,7 +145,7 @@ public class ModifierMenuController implements Initializable {
 
             // verificationUserNom = true;
         } else {
-            labelcalorie.setText ("Check Calorie !!! ");
+            labelcalorie.setText ("il faut un entier > 1000 !");
             
             labelcalorie.setTextFill(Color.RED);
             checkcalorie.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
@@ -164,14 +164,14 @@ public class ModifierMenuController implements Initializable {
             }
         }
         if (nbNonChar == 0 && modifierimageMenu.getText().trim().length() >=5) {
-            labelimage.setText ("Calorie valide :) ");
+            labelimage.setText ("image valide :) ");
             labelimage.setTextFill(Color.GREEN);
             checkimage.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelimage.setText ("Check Calorie !!! ");
+            labelimage.setText ("Check image !!! ");
             labelimage.setTextFill(Color.RED);
             checkimage.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 

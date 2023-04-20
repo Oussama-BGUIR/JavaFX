@@ -54,8 +54,9 @@ public class ModifierPlatController implements Initializable {
     
     @FXML
     private TextField menuidfx;
-        @FXML
-    private CheckBox disponibilitePlatfx;
+    
+    @FXML
+    private CheckBox modifierdisponibilitePlat;
     
     
     
@@ -96,7 +97,7 @@ public class ModifierPlatController implements Initializable {
     private ImageView checkmenuid;
 
     
-           private Stage stage; 
+            private Stage stage; 
     private Scene scene;
     private Parent root;
     
@@ -110,15 +111,15 @@ public class ModifierPlatController implements Initializable {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && nomPlatfx.getText().trim().length() >=5) {
-            labelnom.setText ("nom valide ");
+        if (nbNonChar == 0 && nomPlatfx.getText().trim().length() >=3) {
+            labelnom.setText ("nom valide :) ");
             labelnom.setTextFill(Color.GREEN);
             checknom.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelnom.setText ("Check nom !!! ");
+            labelnom.setText ("le nom doit etre plus que 3 lettres !");
             labelnom.setTextFill(Color.RED);
             checknom.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -142,7 +143,7 @@ public class ModifierPlatController implements Initializable {
 
             // verificationUserNom = true;
         } else {
-            labeldescription.setText ("Check Description !!! ");
+            labeldescription.setText ("écrivez plus que 10 lettres !");
             labeldescription.setTextFill(Color.RED);
             checkdescription.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -167,7 +168,7 @@ public class ModifierPlatController implements Initializable {
 
             // verificationUserNom = true;
         } else {
-            labelcalorie.setText ("Check Calorie !!! ");
+            labelcalorie.setText ("il faut un entier > 100 ! ");
             
             labelcalorie.setTextFill(Color.RED);
             checkcalorie.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
@@ -186,14 +187,14 @@ public class ModifierPlatController implements Initializable {
             }
         }
         if (nbNonChar == 0 && imagePlatfx.getText().trim().length() >=5) {
-            labelimage.setText ("Calorie valide :) ");
+            labelimage.setText ("image valide :) ");
             labelimage.setTextFill(Color.GREEN);
             checkimage.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelimage.setText ("Check Calorie !!! ");
+            labelimage.setText ("Check image !!! ");
             labelimage.setTextFill(Color.RED);
             checkimage.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -209,15 +210,15 @@ public class ModifierPlatController implements Initializable {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && prixPlatfx.getText().trim().length() >=5) {
-            labelprix.setText ("Calorie prix :) ");
+        if (nbNonChar == 0 && prixPlatfx.getText().trim().length() >=4) {
+            labelprix.setText ("prix valide :) ");
             labelprix.setTextFill(Color.GREEN);
             checkprix.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelprix.setText ("Check prix !!! ");
+            labelprix.setText ("il faut un entier > 1000 millimes !");
             labelprix.setTextFill(Color.RED);
             checkprix.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -234,7 +235,7 @@ public class ModifierPlatController implements Initializable {
             }
         }
         if (nbNonChar == 0 && menuidfx.getText().trim().length() <=3) {
-            labelmenuid.setText ("Calorie Menu id :) ");
+            labelmenuid.setText (" Menu id :) ");
             labelmenuid.setTextFill(Color.GREEN);
             checkmenuid.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
@@ -258,9 +259,9 @@ public class ModifierPlatController implements Initializable {
         nomPlatfx.setText(String.valueOf(PlatController.P.getNom()));
         descriptionPlatfx.setText(String.valueOf(PlatController.P.getDescription()));
         caloriePlatfx.setText(String.valueOf(PlatController.P.getCalorie()));
-        disponibilitePlatfx.setText(String.valueOf(PlatController.P.getDisponibilte()));
+        modifierdisponibilitePlat.setText(String.valueOf(PlatController.P.getDisponibilte()));
         imagePlatfx.setText(String.valueOf(PlatController.P.getImage()));
-            menuidfx.setText(String.valueOf(PlatController.P.getMenu_id()));
+        menuidfx.setText(String.valueOf(PlatController.P.getMenu_id()));
         prixPlatfx.setText(String.valueOf(PlatController.P.getPrix()));
     
 }    
@@ -275,16 +276,17 @@ public class ModifierPlatController implements Initializable {
         String nom = nomPlatfx.getText();
         String description = descriptionPlatfx.getText();
         int calorie = Integer.valueOf(caloriePlatfx.getText());
-        boolean disponibilite = disponibilitePlatfx.isSelected();
         String image = imagePlatfx.getText();
-                int menu_id = Integer.valueOf(menuidfx.getText());
+        int menu_id = Integer.valueOf(menuidfx.getText());
         int prix = Integer.valueOf(prixPlatfx.getText());
+        boolean disponibilte = modifierdisponibilitePlat.isSelected();
+        //boolean disponibilte = true ;
 
         
         System.out.println(PlatController.P.getId());
-        Plat men = new Plat(PlatController.P.getId(),PlatController.P.getMenu_id(), calorie, prix,disponibilite, nom, description, image );
+        Plat pl = new Plat(PlatController.P.getId(),PlatController.P.getMenu_id(), calorie, prix, disponibilte , nom, description, image );
       
-        inter.modifierPlat(men);
+        inter.modifierPlat(pl);
         
         try {
 

@@ -10,22 +10,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="900.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Plat.PlatController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Plat.PlatController">
     <stylesheets>
-        <URL value="@ajouterplat.css" />
+        <URL value="@plat.css" />
     </stylesheets>
    <children>
-      <Label layoutX="253.0" layoutY="22.0" prefHeight="36.0" prefWidth="200.0" text="liste des Plat">
+      <Label layoutX="253.0" layoutY="22.0" prefHeight="36.0" prefWidth="200.0" text="liste des Plats">
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font></Label>
-      <TextField layoutX="530.0" layoutY="22.0" prefHeight="36.0" prefWidth="229.0" promptText="Recherche" />
-      <ListView fx:id="AffichageListePlatBackfx" layoutX="242.0" layoutY="81.0" prefHeight="400.0" prefWidth="651.0" />
-      <AnchorPane prefHeight="519.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+      <TextField layoutX="495.0" layoutY="22.0" prefHeight="36.0" prefWidth="467.0" promptText="Recherche" />
+      <ListView fx:id="AffichageListePlatBackfx" layoutX="242.0" layoutY="81.0" prefHeight="473.0" prefWidth="950.0" />
+      <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
          <children>
-            <Button layoutX="39.0" layoutY="265.0" mnemonicParsing="false" onAction="#ajouterPlatBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
-            <Button layoutX="39.0" layoutY="320.0" mnemonicParsing="false" onAction="#modifierPlatBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
-            <Button layoutX="39.0" layoutY="375.0" mnemonicParsing="false" onAction="#supprimerPlatBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <Button layoutX="39.0" layoutY="330.0" mnemonicParsing="false" onAction="#ajouterPlatBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
+            <Button layoutX="39.0" layoutY="400.0" mnemonicParsing="false" onAction="#modifierPlatBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="39.0" layoutY="470.0" mnemonicParsing="false" onAction="#supprimerPlatBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
             <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/elitegym.jpg" />
@@ -33,7 +33,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button layoutX="779.0" layoutY="19.0" mnemonicParsing="false" onAction="#GoToMenu" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #2A303D;" text="Go To Menu List" textFill="WHITE">
+      <Button layoutX="1052.0" layoutY="19.0" mnemonicParsing="false" onAction="#GoToMenu" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #2A303D;" text="Go To Menus List" textFill="WHITE">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>

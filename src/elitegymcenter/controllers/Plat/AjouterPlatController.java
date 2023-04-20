@@ -110,15 +110,15 @@ public class AjouterPlatController implements Initializable {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && nomPlatfx.getText().trim().length() >=5) {
-            labelnom.setText ("nom valide ");
+        if (nbNonChar == 0 && nomPlatfx.getText().trim().length() >=3) {
+            labelnom.setText ("nom valide :) ");
             labelnom.setTextFill(Color.GREEN);
             checknom.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelnom.setText ("Check nom !!! ");
+            labelnom.setText ("le nom doit etre plus que 3 lettres !");
             labelnom.setTextFill(Color.RED);
             checknom.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -142,7 +142,7 @@ public class AjouterPlatController implements Initializable {
 
             // verificationUserNom = true;
         } else {
-            labeldescription.setText ("Check Description !!! ");
+            labeldescription.setText ("écrivez plus que 10 lettres ! ");
             labeldescription.setTextFill(Color.RED);
             checkdescription.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -167,7 +167,7 @@ public class AjouterPlatController implements Initializable {
 
             // verificationUserNom = true;
         } else {
-            labelcalorie.setText ("Check Calorie !!! ");
+            labelcalorie.setText ("il faut un entier > 100 ! ");
             
             labelcalorie.setTextFill(Color.RED);
             checkcalorie.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
@@ -186,14 +186,14 @@ public class AjouterPlatController implements Initializable {
             }
         }
         if (nbNonChar == 0 && imagePlatfx.getText().trim().length() >=5) {
-            labelimage.setText ("Calorie valide :) ");
+            labelimage.setText ("image valide :) ");
             labelimage.setTextFill(Color.GREEN);
             checkimage.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelimage.setText ("Check Calorie !!! ");
+            labelimage.setText ("Check image !!! ");
             labelimage.setTextFill(Color.RED);
             checkimage.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -209,15 +209,15 @@ public class AjouterPlatController implements Initializable {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && prixPlatfx.getText().trim().length() >=3) {
-            labelprix.setText ("Calorie prix :) ");
+        if (nbNonChar == 0 && prixPlatfx.getText().trim().length() >=4) {
+            labelprix.setText (" prix valide :) ");
             labelprix.setTextFill(Color.GREEN);
             checkprix.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
 
             // verificationUserNom = true;
         } else {
-            labelprix.setText ("Check prix !!! ");
+            labelprix.setText ("il faut un entier > 1000 millimes !");
             labelprix.setTextFill(Color.RED);
             checkprix.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
 
@@ -234,7 +234,7 @@ public class AjouterPlatController implements Initializable {
             }
         }
         if (nbNonChar == 0 && menuidfx.getText().trim().length() <=3) {
-            labelmenuid.setText ("Calorie Menu id :) ");
+            labelmenuid.setText ("Menu id :) ");
             labelmenuid.setTextFill(Color.GREEN);
             checkmenuid.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
 
@@ -277,10 +277,10 @@ public class AjouterPlatController implements Initializable {
         int menu_id = Integer.valueOf(menuidfx.getText());
         int prix = Integer.valueOf(prixPlatfx.getText());
 
-        boolean disponibilite = disponibilitePlatfx.isSelected(); // Get the boolean value from CheckBox
+        boolean disponibilte = disponibilitePlatfx.isSelected(); // Get the boolean value from CheckBox
        // boolean disponibilite = true ;
 
-        Plat P = new Plat(menu_id,calorie,prix, disponibilite, nom, description, image);
+        Plat P = new Plat(menu_id,calorie,prix, disponibilte, nom, description, image);
         ServicePlatCRUD ServicePlat = new ServicePlatCRUD();
         ServicePlat.ajouterPlat(P);
         

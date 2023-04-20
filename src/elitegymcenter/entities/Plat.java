@@ -120,7 +120,7 @@ public class Plat {
 
     @Override
     public String toString() {
-        return "Plat{" + "id=" + id +  ", menu_id=" + menu_id +  ", nom=" + nom + ", description=" + description + ", calorie=" + calorie + ", prix=" + prix + ", desponibilte=" + disponibilte + ", image=" + image + '}';
+        return "Plat{" + "id=" + id +  ", menu_id=" + menu_id +  ", nom=" + nom + ", description=" + description + ", calorie=" + calorie + ", prix=" + prix + ", desponibilite=" + disponibilte + ", image=" + image + '}';
     }
    
        

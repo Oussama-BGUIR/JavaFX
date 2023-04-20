@@ -48,11 +48,10 @@
          <font>
             <Font size="15.0" />
          </font></Text>
-      <Text layoutX="297.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilite">
+      <Text layoutX="297.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponibilte">
          <font>
             <Font size="16.0" />
          </font></Text>
-      <CheckBox fx:id="disponibilitePlatfx" layoutX="416.0" layoutY="492.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="92.0" text="CheckBox" />
       <Label fx:id="labelnom" layoutX="390.0" layoutY="105.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -133,5 +132,6 @@
          </font>
       </Label>
       <ImageView fx:id="checkmenuid" fitHeight="38.0" fitWidth="38.0" layoutX="594.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
+      <CheckBox fx:id="modifierdisponibilitePlat" layoutX="400.0" layoutY="486.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="149.0" text="CheckBox" />
    </children>
 </AnchorPane>

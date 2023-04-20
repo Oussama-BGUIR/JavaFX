@@ -38,7 +38,7 @@ public class PlatController implements Initializable {
     private ListView<Plat> AffichageListePlatBackfx;
     static Plat P = new Plat();
     static int id,menu_id , prix, calorie;
-    static boolean disponibilite;
+    static boolean disponibilte;
     static String nom,description ,image;
 
            private Stage stage; 
@@ -71,18 +71,18 @@ public class PlatController implements Initializable {
         int selectedIndex = list.getSelectionModel().getSelectedIndex();
         
 
-        Plat m = list.getSelectionModel().getSelectedItem();
+        Plat p = list.getSelectionModel().getSelectedItem();
  
        
        
-        String nom = m.getNom();
-        int prix = m.getPrix();
-        int menu_id = m.getMenu_id();
-        String description = m.getDescription();
-        int calorie = m.getCalorie();
-        boolean disponibilte = m.getDisponibilte();
-        String image = m.getImage();
-        P=m;
+        String nom = p.getNom();
+        int prix = p.getPrix();
+        int menu_id = p.getMenu_id();
+        String description = p.getDescription();
+        int calorie = p.getCalorie();
+        boolean disponibilte = p.getDisponibilte();
+        String image = p.getImage();
+        P=p;
         
         try {
 
