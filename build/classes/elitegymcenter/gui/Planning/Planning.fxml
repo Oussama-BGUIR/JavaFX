@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Planning.PlanningController">
+    <stylesheets>
+        <URL value="@menu.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="253.0" layoutY="22.0" prefHeight="36.0" prefWidth="271.0" text="liste des Plannings">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Label>
+      <TextField layoutX="484.0" layoutY="22.0" prefHeight="36.0" prefWidth="467.0" promptText="Recherche" />
+      <ListView fx:id="AffichageListePlanningsBackfx" layoutX="242.0" layoutY="81.0" prefHeight="473.0" prefWidth="950.0" />
+      <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="39.0" layoutY="330.0" mnemonicParsing="false" onAction="#ajouterPlanningBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
+            <Button layoutX="39.0" layoutY="400.0" mnemonicParsing="false" onAction="#modifierPlanningBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="39.0" layoutY="470.0" mnemonicParsing="false" onAction="#supprimerPlanningBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/elitegym.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button layoutX="1052.0" layoutY="19.0" mnemonicParsing="false" onAction="#GoToCours" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #2A303D;" text="Go To Courss List" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

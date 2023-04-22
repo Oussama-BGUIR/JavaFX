@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Planning.AjouterPlanningController">
+    <stylesheets>
+        <URL value="@ajoutermenu.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="semainePlanningfx" layoutX="390.0" layoutY="70.0" onKeyReleased="#verifiernom" prefHeight="32.0" prefWidth="242.0" promptText="Semaine">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <TextField fx:id="descriptionPlanningfx" layoutX="390.0" layoutY="138.0" onKeyReleased="#verifierDesc" prefHeight="38.0" prefWidth="242.0" promptText="DESCRIPTION">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Text layoutX="306.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semaine">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="289.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPTION">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Label fx:id="labelsemaine" layoutX="390.0" layoutY="107.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="530.0" prefWidth="242.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <ImageView fitHeight="256.0" fitWidth="200.0" layoutX="21.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/elitegym.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button layoutX="340.0" layoutY="379.0" mnemonicParsing="false" onAction="#AjoutPlanning" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #2A303D;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="labeldescription" layoutX="390.0" layoutY="176.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelimage" layoutX="391.0" layoutY="310.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="checksemaine" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdescription" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="250.0" layoutY="18.0" text="Ajouter un Planning" textFill="#2a303d">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="340.0" layoutY="433.0" mnemonicParsing="false" onAction="#switchToList" prefHeight="38.0" prefWidth="242.0" style="-fx-background-color: #2A303D;" text="Retour au Liste" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
