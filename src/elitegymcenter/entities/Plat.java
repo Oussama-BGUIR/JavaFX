@@ -12,11 +12,34 @@ package elitegymcenter.entities;
  * @author ousam
  */
 public class Plat {
+    private Menu menu;
     private int id , menu_id , calorie , prix ;
     private boolean disponibilte ;
     private String nom , description , image ;
-    
 
+    public Plat(Menu menu, int id, int calorie, int prix, boolean disponibilte, String nom, String description, String image) {
+        this.menu = menu;
+        this.id = id;
+        this.calorie = calorie;
+        this.prix = prix;
+        this.disponibilte = disponibilte;
+        this.nom = nom;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Plat(Menu menu, int calorie, int prix, boolean disponibilte, String nom, String description, String image) {
+        this.menu = menu;
+        this.calorie = calorie;
+        this.prix = prix;
+        this.disponibilte = disponibilte;
+        this.nom = nom;
+        this.description = description;
+        this.image = image;
+    }
+    
+ 
+    
         public Plat(int menu_id, int calorie, int prix, boolean disponibilte, String nom, String description, String image) {
         this.menu_id = menu_id;
         this.calorie = calorie;
@@ -36,6 +59,14 @@ public class Plat {
         this.nom = nom;
         this.description = description;
         this.image = image;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
     
     

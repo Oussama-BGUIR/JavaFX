@@ -10,6 +10,7 @@ import elitegymcenter.entities.Menu;
 import elitegymcenter.entities.Plat;
 import elitegymcenter.services.ServiceMenuCRUD;
 import elitegymcenter.services.ServicePlatCRUD;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,13 +24,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -45,20 +50,20 @@ public class AjouterPlatController implements Initializable {
     private TextField descriptionPlatfx;
     @FXML
     private TextField caloriePlatfx;
-    @FXML
-    private TextField imagePlatfx;
+    //@FXML
+    //private TextField imagePlatfx;
     @FXML
     private TextField prixPlatfx;
     
+
     @FXML
-    private TextField menuidfx;
-    
+    private ComboBox<Menu> menuidfx;
     
     
     @FXML
     private CheckBox disponibilitePlatfx;
     
-    
+  
     
     @FXML
     private Label labelnom;
@@ -69,8 +74,8 @@ public class AjouterPlatController implements Initializable {
     @FXML
     private Label labelcalorie;
     
-    @FXML
-    private Label labelimage;
+   // @FXML
+   // private Label labelimage;
 
     @FXML
     private Label labelprix;
@@ -89,8 +94,8 @@ public class AjouterPlatController implements Initializable {
     @FXML
     private ImageView checkcalorie;
 
-    @FXML
-    private ImageView checkimage;
+   // @FXML
+    //private ImageView checkimage;
     @FXML
     private ImageView checkprix;
     @FXML
@@ -100,16 +105,47 @@ public class AjouterPlatController implements Initializable {
     private Scene scene;
     private Parent root;
     
+    ServiceMenuCRUD acs=new ServiceMenuCRUD();
+    
+    @FXML
+    private AnchorPane panePlat;
+
+    @FXML
+    private Button selectImageBtnPlat;
+
+    @FXML
+    private ImageView selectedImagePlat;
+    
+    
+    private File selectedImageFile;
+     public void ImportBtnPlat() {
+
+        FileChooser openFile = new FileChooser();
+        openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Open Image File", "*png", "*jpg","*jpeg"));
+
+        selectedImageFile = openFile.showOpenDialog(panePlat.getScene().getWindow());
+
+        if (selectedImageFile != null) {
+            selectedImagePlat .setImage(new Image(selectedImageFile.toURI().toString(), 82, 84, false, true));
+
+//            path = file.getAbsolutePath();
+//            imagev = new Image(file.toURI().toString(), 134, 133, false, true);
+//
+//            image.setImage(imagev);
+        }
+    }
+    
     
     @FXML
     private void verifiernom(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < nomPlatfx.getText().trim().length(); i++) {
-            char ch = nomPlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
+                    int nbNonChar = 0;
+            String nom = nomPlatfx.getText().trim(); // Enlever les espaces en début et en fin
+            for (int i = 0; i < nom.length(); i++) {
+                char ch = nom.charAt(i);
+                if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) { // Vérifier les espaces aussi
+                    nbNonChar++;
+                }
             }
-        }
         if (nbNonChar == 0 && nomPlatfx.getText().trim().length() >=3) {
             labelnom.setText ("nom valide :) ");
             labelnom.setTextFill(Color.GREEN);
@@ -127,13 +163,14 @@ public class AjouterPlatController implements Initializable {
     }
         @FXML
     private void verifierDesc(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < descriptionPlatfx.getText().trim().length(); i++) {
-            char ch = descriptionPlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
+                int nbNonChar = 0;
+            String description = descriptionPlatfx.getText().trim(); // Enlever les espaces en début et en fin
+            for (int i = 0; i < description.length(); i++) {
+                char ch = description.charAt(i);
+                if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) { // Vérifier les espaces aussi
+                    nbNonChar++;
+                }
             }
-        }
         if (nbNonChar == 0 && descriptionPlatfx.getText().trim().length() >=10) {
             labeldescription.setText ("Description valide :) ");
             labeldescription.setTextFill(Color.GREEN);
@@ -176,30 +213,7 @@ public class AjouterPlatController implements Initializable {
         }
     }
     
-        @FXML
-    private void verifierImg(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < imagePlatfx.getText().trim().length(); i++) {
-            char ch = imagePlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && imagePlatfx.getText().trim().length() >=5) {
-            labelimage.setText ("image valide :) ");
-            labelimage.setTextFill(Color.GREEN);
-            checkimage.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelimage.setText ("Check image !!! ");
-            labelimage.setTextFill(Color.RED);
-            checkimage.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
+       
     @FXML
     private void verifierPrix(KeyEvent event) {
         int nbNonChar = 0;
@@ -224,37 +238,14 @@ public class AjouterPlatController implements Initializable {
 
         }
     }
-         @FXML
-    private void verifierMenuId(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < menuidfx.getText().trim().length(); i++) {
-            char ch = menuidfx.getText().charAt(i);
-            if (Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && menuidfx.getText().trim().length() <=3) {
-            labelmenuid.setText ("Menu id :) ");
-            labelmenuid.setTextFill(Color.GREEN);
-            checkmenuid.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelmenuid.setText ("Check menu id !!! ");
-            labelmenuid.setTextFill(Color.RED);
-            checkmenuid.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
+        
      
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        menuidfx.getItems().addAll(acs.afficherMenu());
         
     }    
 
@@ -267,20 +258,19 @@ public class AjouterPlatController implements Initializable {
             showAlert("La case description est vide!");
         }else if(caloriePlatfx.getText().isEmpty()){
             showAlert("La case calorie est vide!");
-        } else if(imagePlatfx.getText().isEmpty()){
-            showAlert("La case image est vide!");
         }else{
             String nom = nomPlatfx.getText();
         String description = descriptionPlatfx.getText();
         int calorie = Integer.valueOf(caloriePlatfx.getText());
-        String image = imagePlatfx.getText();
-        int menu_id = Integer.valueOf(menuidfx.getText());
+        //String image = imagePlatfx.getText();
+        //int menu_id = Integer.valueOf(menuidfx.getText());
         int prix = Integer.valueOf(prixPlatfx.getText());
 
         boolean disponibilte = disponibilitePlatfx.isSelected(); // Get the boolean value from CheckBox
        // boolean disponibilite = true ;
+       String imagePath = selectedImageFile.toString();
 
-        Plat P = new Plat(menu_id,calorie,prix, disponibilte, nom, description, image);
+        Plat P = new Plat(menuidfx.getValue().getId(),calorie,prix, disponibilte, nom, description, imagePath);
         ServicePlatCRUD ServicePlat = new ServicePlatCRUD();
         ServicePlat.ajouterPlat(P);
         

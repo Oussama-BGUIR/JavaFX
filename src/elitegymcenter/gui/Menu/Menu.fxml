@@ -26,9 +26,9 @@
             <Button layoutX="39.0" layoutY="330.0" mnemonicParsing="false" onAction="#ajouterMenuBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
             <Button layoutX="39.0" layoutY="400.0" mnemonicParsing="false" onAction="#modifierMenuBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
             <Button layoutX="39.0" layoutY="470.0" mnemonicParsing="false" onAction="#supprimerMenuBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
-            <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/elitegym.jpg" />
+                  <Image url="@../../images/elitegym.png" />
                </image>
             </ImageView>
          </children>

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.ModifierMenuController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Menu.ModifierMenuController">
     <stylesheets>
         <URL value="@ajoutermenu.css" />
     </stylesheets>
@@ -25,10 +25,6 @@
             <Font size="16.0" />
          </font></TextField>
       <TextField fx:id="modifiercalorieMenu" layoutX="390.0" layoutY="207.0" onKeyReleased="#verifierCal" prefHeight="38.0" prefWidth="242.0" promptText="CALORIE">
-         <font>
-            <Font size="16.0" />
-         </font></TextField>
-      <TextField fx:id="modifierimageMenu" layoutX="390.0" layoutY="276.0" onKeyReleased="#verifierImg" prefHeight="32.0" prefWidth="242.0" promptText="IMAGE">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -62,7 +58,7 @@
          <children>
             <ImageView fitHeight="222.0" fitWidth="215.0" layoutX="13.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/elitegym.jpg" />
+                  <Image url="@../../images/elitegym.png" />
                </image>
             </ImageView>
          </children>
@@ -82,15 +78,9 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="labelimage" layoutX="391.0" layoutY="310.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
       <ImageView fx:id="checknom" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="checkdescription" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="checkcalorie" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="checkimage" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="250.0" layoutY="18.0" text="Modifier un Menu" textFill="#2a303d">
          <font>
             <Font name="System Bold Italic" size="22.0" />
@@ -101,5 +91,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
+      <Button fx:id="selectImageBtn_modifier" layoutX="391.0" layoutY="283.0" mnemonicParsing="false" onAction="#ImportBtn_modifier" prefHeight="26.0" prefWidth="98.0" text="Selectionner" />
+      <ImageView fx:id="selectedImage_modifier" fitHeight="84.0" fitWidth="82.0" layoutX="530.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

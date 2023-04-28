@@ -28,7 +28,23 @@ public class ServicePlatCRUD implements PlatCRUD{
     Connection conn = MyDB.getInstance().getConn();
     
     @Override
-
+    /*
+    public void ajouterPlat(Plat P) {
+       try {
+            String req = "INSERT INTO `plat`( `menu_id` ,`nom`, `description`, `disponibilite`, `calorie`, `image`, `prix` ) VALUES ('"+P.getMenu_id()+"','"+P.getNom()+"','"+P.getDescription()+"','"+P.getDisponibilte()+"','"+P.getCalorie()+"','"+P.getImage()+"','"+P.getPrix()+"')";
+           
+            ste = conn.createStatement();
+            ste.executeUpdate(req);
+            
+            System.out.println("Plat ajouté avec success !!!");
+        } catch (SQLException ex) {
+            System.out.println("malheureusement le Plat n'est pas ajouté .. ");
+    
+    
+}
+    }
+    */
+    
     
     public void ajouterPlat(Plat P) {
         try {

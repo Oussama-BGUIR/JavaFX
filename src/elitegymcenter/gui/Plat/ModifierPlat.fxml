@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,24 +12,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Plat.ModifierPlatController">
+<AnchorPane id="AnchorPane" fx:id="panePlat" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Plat.ModifierPlatController">
     <stylesheets>
         <URL value="@modifierplat.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="nomPlatfx" layoutX="390.0" layoutY="68.0" onKeyReleased="#verifiernom" prefHeight="32.0" prefWidth="242.0" promptText="Nom">
+      <TextField fx:id="nomPlatfx_modifier" layoutX="390.0" layoutY="68.0" onKeyReleased="#verifiernom" prefHeight="32.0" prefWidth="242.0" promptText="Nom">
          <font>
             <Font size="17.0" />
          </font></TextField>
-      <TextField fx:id="descriptionPlatfx" layoutX="390.0" layoutY="136.0" onKeyReleased="#verifierDesc" prefHeight="38.0" prefWidth="242.0" promptText="DESCRIPTION">
+      <TextField fx:id="descriptionPlatfx_modifier" layoutX="390.0" layoutY="136.0" onKeyReleased="#verifierDesc" prefHeight="38.0" prefWidth="242.0" promptText="DESCRIPTION">
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <TextField fx:id="caloriePlatfx" layoutX="390.0" layoutY="205.0" onKeyReleased="#verifierCal" prefHeight="38.0" prefWidth="242.0" promptText="CALORIE">
-         <font>
-            <Font size="16.0" />
-         </font></TextField>
-      <TextField fx:id="imagePlatfx" layoutX="390.0" layoutY="274.0" onKeyReleased="#verifierImg" prefHeight="32.0" prefWidth="242.0" promptText="IMAGE">
+      <TextField fx:id="caloriePlatfx_modifier" layoutX="390.0" layoutY="205.0" onKeyReleased="#verifierCal" prefHeight="38.0" prefWidth="242.0" promptText="CALORIE">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -61,7 +58,7 @@
          <children>
             <ImageView fitHeight="256.0" fitWidth="200.0" layoutX="21.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/elitegym.jpg" />
+                  <Image url="@../../images/elitegym.png" />
                </image>
             </ImageView>
             <Button layoutX="22.0" layoutY="386.0" mnemonicParsing="false" onAction="#modifierplat" prefHeight="38.0" prefWidth="200.0" style="-fx-background-color: #B0F2B6;" text="Modifier" textFill="WHITE">
@@ -86,21 +83,15 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="labelimage" layoutX="391.0" layoutY="308.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
       <ImageView fx:id="checknom" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="checkdescription" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="checkcalorie" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="checkimage" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="250.0" layoutY="18.0" text="Modifier un Plat" textFill="#2a303d">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="prixPlatfx" layoutX="391.0" layoutY="344.0" onKeyReleased="#verifierPrix" prefHeight="32.0" prefWidth="242.0" promptText="PRIX">
+      <TextField fx:id="prixPlatfx_modifier" layoutX="391.0" layoutY="344.0" onKeyReleased="#verifierPrix" prefHeight="32.0" prefWidth="242.0" promptText="PRIX">
          <font>
             <Font size="16.0" />
          </font>
@@ -116,22 +107,14 @@
          </font>
       </Label>
       <ImageView fx:id="checkprix" fitHeight="38.0" fitWidth="38.0" layoutX="594.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="menuidfx" layoutX="391.0" layoutY="418.0" onKeyReleased="#verifierMenuId" prefHeight="32.0" prefWidth="242.0" promptText="Menu_Id">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
       <Text layoutX="324.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu_Id">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Label fx:id="labelmenuid" layoutX="391.0" layoutY="456.0" prefHeight="26.0" prefWidth="242.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="checkmenuid" fitHeight="38.0" fitWidth="38.0" layoutX="594.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
       <CheckBox fx:id="modifierdisponibilitePlat" layoutX="400.0" layoutY="486.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="149.0" text="CheckBox" />
+      <ComboBox fx:id="menuidfx_modifier" layoutX="390.0" layoutY="425.0" prefHeight="26.0" prefWidth="242.0" />
+      <Button fx:id="selectImageBtnPlat_modifier" layoutX="392.0" layoutY="281.0" mnemonicParsing="false" onAction="#ImportBtnPlat_modifier" prefHeight="26.0" prefWidth="91.0" text="Selectionner" />
+      <ImageView fx:id="selectedImagePlat_modifier" fitHeight="84.0" fitWidth="82.0" layoutX="530.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

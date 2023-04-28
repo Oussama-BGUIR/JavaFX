@@ -7,6 +7,7 @@ package elitegymcenter.controllers.Menu;
 
 import elitegymcenter.entities.Menu;
 import elitegymcenter.services.ServiceMenuCRUD;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,13 +21,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -42,8 +46,8 @@ public class AjouterMenuController implements Initializable {
     private TextField descriptionMenufx;
     @FXML
     private TextField calorieMenufx;
-    @FXML
-    private TextField imageMenufx;
+   // @FXML
+   // private TextField imageMenufx;
     @FXML
     private CheckBox disponibiliteMenufx;
     
@@ -58,8 +62,8 @@ public class AjouterMenuController implements Initializable {
     @FXML
     private Label labelcalorie;
     
-    @FXML
-    private Label labelimage;
+   // @FXML
+   // private Label labelimage;
 
     
     @FXML
@@ -71,8 +75,8 @@ public class AjouterMenuController implements Initializable {
     @FXML
     private ImageView checkcalorie;
 
-    @FXML
-    private ImageView checkimage;
+   // @FXML
+  //  private ImageView checkimage;
 
            private Stage stage; 
     private Scene scene;
@@ -80,14 +84,42 @@ public class AjouterMenuController implements Initializable {
     
     
     @FXML
-    private void verifiernom(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < nomMenufx.getText().trim().length(); i++) {
-            char ch = nomMenufx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
+    private AnchorPane pane;
+
+    @FXML
+    private Button selectImageBtn;
+
+    @FXML
+    private ImageView selectedImage;
+    
+    private File selectedImageFile;
+    
+    public void ImportBtn() {
+        FileChooser openFile = new FileChooser();
+        openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Open Image File", "*png", "*jpg","*jpeg"));
+
+        selectedImageFile = openFile.showOpenDialog(pane.getScene().getWindow());
+
+        if (selectedImageFile != null) {
+            selectedImage .setImage(new Image(selectedImageFile.toURI().toString(), 82, 84, false, true));
+
+//            path = file.getAbsolutePath();
+//            imagev = new Image(file.toURI().toString(), 134, 133, false, true);
+//
+//            image.setImage(imagev);
         }
+    }
+    
+    @FXML
+    private void verifiernom(KeyEvent event) {
+            int nbNonChar = 0;
+            String nom = nomMenufx.getText().trim(); // Enlever les espaces en début et en fin
+            for (int i = 0; i < nom.length(); i++) {
+                char ch = nom.charAt(i);
+                if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) { // Vérifier les espaces aussi
+                    nbNonChar++;
+                }
+            }
         if (nbNonChar == 0 && nomMenufx.getText().trim().length() >=5) {
             labelnom.setText ("nom valide :) ");
             labelnom.setTextFill(Color.GREEN);
@@ -105,13 +137,14 @@ public class AjouterMenuController implements Initializable {
     }
         @FXML
     private void verifierDesc(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < descriptionMenufx.getText().trim().length(); i++) {
-            char ch = descriptionMenufx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
+                int nbNonChar = 0;
+            String description = descriptionMenufx.getText().trim(); // Enlever les espaces en début et en fin
+            for (int i = 0; i < description.length(); i++) {
+                char ch = description.charAt(i);
+                if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) { // Vérifier les espaces aussi
+                    nbNonChar++;
+                }
             }
-        }
         if (nbNonChar == 0 && descriptionMenufx.getText().trim().length() >=20) {
             labeldescription.setText ("Description valide :) ");
             labeldescription.setTextFill(Color.GREEN);
@@ -154,30 +187,7 @@ public class AjouterMenuController implements Initializable {
         }
     }
     
-        @FXML
-    private void verifierImg(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < imageMenufx.getText().trim().length(); i++) {
-            char ch = imageMenufx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && imageMenufx.getText().trim().length() >=5) {
-            labelimage.setText ("image valide :) ");
-            labelimage.setTextFill(Color.GREEN);
-            checkimage.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelimage.setText ("Check image !!! ");
-            labelimage.setTextFill(Color.RED);
-            checkimage.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
+        
     
     /**
      * Initializes the controller class.
@@ -197,17 +207,17 @@ public class AjouterMenuController implements Initializable {
             showAlert("La case description est vide!");
         }else if(calorieMenufx.getText().isEmpty()){
             showAlert("La case calorie est vide!");
-        } else if(imageMenufx.getText().isEmpty()){
-            showAlert("La case image est vide!");
         }else{
             String nom = nomMenufx.getText();
         String description = descriptionMenufx.getText();
         int calorie = Integer.valueOf(calorieMenufx.getText());
-        String image = imageMenufx.getText();
+       // String image = imageMenufx.getText();
         boolean disponibilite = disponibiliteMenufx.isSelected(); // Get the boolean value from CheckBox
        // boolean disponibilite = true ;
 
-        Menu M = new Menu(calorie, disponibilite, nom, description, image);
+        String imagePath = selectedImageFile.toString();
+
+        Menu M = new Menu(calorie, disponibilite, nom, description, imagePath);
         ServiceMenuCRUD ServiceMenu = new ServiceMenuCRUD();
         ServiceMenu.ajouterMenu(M);
         

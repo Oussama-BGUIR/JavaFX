@@ -12,6 +12,7 @@ import elitegymcenter.interfaces.MenuCRUD;
 import elitegymcenter.interfaces.PlatCRUD;
 import elitegymcenter.services.ServiceMenuCRUD;
 import elitegymcenter.services.ServicePlatCRUD;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,13 +26,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -42,23 +47,24 @@ import javafx.stage.Stage;
 public class ModifierPlatController implements Initializable {
 
     @FXML
-    private TextField nomPlatfx;
+    private TextField nomPlatfx_modifier;
     @FXML
-    private TextField descriptionPlatfx;
+    private TextField descriptionPlatfx_modifier;
     @FXML
-    private TextField caloriePlatfx;
+    private TextField caloriePlatfx_modifier;
+   // @FXML
+   // private TextField imagePlatfx_modifier;
     @FXML
-    private TextField imagePlatfx;
-    @FXML
-    private TextField prixPlatfx;
+    private TextField prixPlatfx_modifier;
     
-    @FXML
-    private TextField menuidfx;
+
     
     @FXML
     private CheckBox modifierdisponibilitePlat;
     
-    
+        @FXML
+    private ComboBox<Menu> menuidfx_modifier;
+        
     
     @FXML
     private Label labelnom;
@@ -69,8 +75,8 @@ public class ModifierPlatController implements Initializable {
     @FXML
     private Label labelcalorie;
     
-    @FXML
-    private Label labelimage;
+   // @FXML
+    //private Label labelimage;
     @FXML
     private Label labelprix;
 
@@ -88,8 +94,8 @@ public class ModifierPlatController implements Initializable {
     @FXML
     private ImageView checkcalorie;
 
-    @FXML
-    private ImageView checkimage;
+    //@FXML
+   // private ImageView checkimage;
 
         @FXML
     private ImageView checkprix;
@@ -100,18 +106,46 @@ public class ModifierPlatController implements Initializable {
             private Stage stage; 
     private Scene scene;
     private Parent root;
+     ServiceMenuCRUD acs=new ServiceMenuCRUD();
+     
+         @FXML
+    private AnchorPane panePlat;
+
+    @FXML
+    private Button selectImageBtnPlat_modifier;
+
+    @FXML
+    private ImageView selectedImagePlat_modifier;
     
+        private File selectedImageFile;
+        public void ImportBtnPlat_modifier() {
+
+        FileChooser openFile = new FileChooser();
+        openFile.getExtensionFilters().add(new FileChooser.ExtensionFilter("Open Image File", "*png", "*jpg","*jpeg"));
+
+        selectedImageFile = openFile.showOpenDialog(panePlat.getScene().getWindow());
+
+        if (selectedImageFile != null) {
+            selectedImagePlat_modifier .setImage(new Image(selectedImageFile.toURI().toString(), 82, 84, false, true));
+
+//            path = file.getAbsolutePath();
+//            imagev = new Image(file.toURI().toString(), 134, 133, false, true);
+//
+//            image.setImage(imagev);
+        }
+    }
     
     @FXML
     private void verifiernom(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < nomPlatfx.getText().trim().length(); i++) {
-            char ch = nomPlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
+             int nbNonChar = 0;
+            String nom = nomPlatfx_modifier.getText().trim(); // Enlever les espaces en début et en fin
+            for (int i = 0; i < nom.length(); i++) {
+                char ch = nom.charAt(i);
+                if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) { // Vérifier les espaces aussi
+                    nbNonChar++;
+                }
             }
-        }
-        if (nbNonChar == 0 && nomPlatfx.getText().trim().length() >=3) {
+        if (nbNonChar == 0 && nomPlatfx_modifier.getText().trim().length() >=3) {
             labelnom.setText ("nom valide :) ");
             labelnom.setTextFill(Color.GREEN);
             checknom.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
@@ -128,14 +162,15 @@ public class ModifierPlatController implements Initializable {
     }
         @FXML
     private void verifierDesc(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < descriptionPlatfx.getText().trim().length(); i++) {
-            char ch = descriptionPlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
+                int nbNonChar = 0;
+            String description = descriptionPlatfx_modifier.getText().trim(); // Enlever les espaces en début et en fin
+            for (int i = 0; i < description.length(); i++) {
+                char ch = description.charAt(i);
+                if (!Character.isLetter(ch) && !Character.isWhitespace(ch)) { // Vérifier les espaces aussi
+                    nbNonChar++;
+                }
             }
-        }
-        if (nbNonChar == 0 && descriptionPlatfx.getText().trim().length() >=10) {
+        if (nbNonChar == 0 && descriptionPlatfx_modifier.getText().trim().length() >=10) {
             labeldescription.setText ("Description valide :) ");
             labeldescription.setTextFill(Color.GREEN);
             checkdescription.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
@@ -154,13 +189,13 @@ public class ModifierPlatController implements Initializable {
         @FXML
     private void verifierCal(KeyEvent event) {
         int nbNonChar = 0;
-        for (int i = 1; i < caloriePlatfx.getText().trim().length(); i++) {
-            char ch = caloriePlatfx.getText().charAt(i);
+        for (int i = 1; i < caloriePlatfx_modifier.getText().trim().length(); i++) {
+            char ch = caloriePlatfx_modifier.getText().charAt(i);
             if (Character.isLetter(ch)) {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && caloriePlatfx.getText().trim().length() >=3) {
+        if (nbNonChar == 0 && caloriePlatfx_modifier.getText().trim().length() >=3) {
             labelcalorie.setText ("Calorie valide :) ");
             labelcalorie.setTextFill(Color.GREEN);
             checkcalorie.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
@@ -177,40 +212,17 @@ public class ModifierPlatController implements Initializable {
         }
     }
     
-        @FXML
-    private void verifierImg(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < imagePlatfx.getText().trim().length(); i++) {
-            char ch = imagePlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && imagePlatfx.getText().trim().length() >=5) {
-            labelimage.setText ("image valide :) ");
-            labelimage.setTextFill(Color.GREEN);
-            checkimage.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelimage.setText ("Check image !!! ");
-            labelimage.setTextFill(Color.RED);
-            checkimage.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
+       
     @FXML
     private void verifierPrix(KeyEvent event) {
         int nbNonChar = 0;
-        for (int i = 1; i < prixPlatfx.getText().trim().length(); i++) {
-            char ch = prixPlatfx.getText().charAt(i);
+        for (int i = 1; i < prixPlatfx_modifier.getText().trim().length(); i++) {
+            char ch = prixPlatfx_modifier.getText().charAt(i);
             if (Character.isLetter(ch)) {
                 nbNonChar++;
             }
         }
-        if (nbNonChar == 0 && prixPlatfx.getText().trim().length() >=4) {
+        if (nbNonChar == 0 && prixPlatfx_modifier.getText().trim().length() >=4) {
             labelprix.setText ("prix valide :) ");
             labelprix.setTextFill(Color.GREEN);
             checkprix.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
@@ -225,30 +237,7 @@ public class ModifierPlatController implements Initializable {
 
         }
     }
-         @FXML
-    private void verifierMenuId(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < menuidfx.getText().trim().length(); i++) {
-            char ch = menuidfx.getText().charAt(i);
-            if (Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && menuidfx.getText().trim().length() <=3) {
-            labelmenuid.setText (" Menu id :) ");
-            labelmenuid.setTextFill(Color.GREEN);
-            checkmenuid.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelmenuid.setText ("Check menu id !!! ");
-            labelmenuid.setTextFill(Color.RED);
-            checkmenuid.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
+        
      
     /**
      * Initializes the controller class.
@@ -256,14 +245,15 @@ public class ModifierPlatController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       // TODO
-        nomPlatfx.setText(String.valueOf(PlatController.P.getNom()));
-        descriptionPlatfx.setText(String.valueOf(PlatController.P.getDescription()));
-        caloriePlatfx.setText(String.valueOf(PlatController.P.getCalorie()));
+        menuidfx_modifier.getItems().addAll(acs.afficherMenu());
+        nomPlatfx_modifier.setText(String.valueOf(PlatController.P.getNom()));
+        descriptionPlatfx_modifier.setText(String.valueOf(PlatController.P.getDescription()));
+        caloriePlatfx_modifier.setText(String.valueOf(PlatController.P.getCalorie()));
         modifierdisponibilitePlat.setText(String.valueOf(PlatController.P.getDisponibilte()));
-        imagePlatfx.setText(String.valueOf(PlatController.P.getImage()));
-        menuidfx.setText(String.valueOf(PlatController.P.getMenu_id()));
-        prixPlatfx.setText(String.valueOf(PlatController.P.getPrix()));
-    
+       // imagePlatfx_modifier.setText(String.valueOf(PlatController.P.getImage()));
+       // menuidfx_modifier.setText(String.valueOf(PlatController.P.getMenu_id()));
+        prixPlatfx_modifier.setText(String.valueOf(PlatController.P.getPrix()));
+
 }    
     
 
@@ -273,18 +263,20 @@ public class ModifierPlatController implements Initializable {
     
         PlatCRUD inter = new ServicePlatCRUD();
         
-        String nom = nomPlatfx.getText();
-        String description = descriptionPlatfx.getText();
-        int calorie = Integer.valueOf(caloriePlatfx.getText());
-        String image = imagePlatfx.getText();
-        int menu_id = Integer.valueOf(menuidfx.getText());
-        int prix = Integer.valueOf(prixPlatfx.getText());
+        String nom = nomPlatfx_modifier.getText();
+        String description = descriptionPlatfx_modifier.getText();
+        int calorie = Integer.valueOf(caloriePlatfx_modifier.getText());
+        //String image = imagePlatfx_modifier.getText();
+        //int menu_id = Integer.valueOf(menuidfx_modifier.getText());
+        int prix = Integer.valueOf(prixPlatfx_modifier.getText());
         boolean disponibilte = modifierdisponibilitePlat.isSelected();
         //boolean disponibilte = true ;
 
         
         System.out.println(PlatController.P.getId());
-        Plat pl = new Plat(PlatController.P.getId(),PlatController.P.getMenu_id(), calorie, prix, disponibilte , nom, description, image );
+        String imagePath = selectedImageFile.toString();
+
+        Plat pl = new Plat(PlatController.P.getId(),menuidfx_modifier.getValue().getId(), calorie, prix, disponibilte , nom, description, imagePath );
       
         inter.modifierPlat(pl);
         

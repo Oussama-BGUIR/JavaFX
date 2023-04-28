@@ -93,14 +93,10 @@ public class Menu {
     @Override
     public String toString() {
         return "Menu{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", calorie=" + calorie + ", desponibilite=" + disponibilite + ", image=" + image + '}';
+   // return " nom=" + nom ;
     }
     
-    /*
-     @Override
-    public String toString() {
-        return "Evenement{" + "id=" + id + ", date=" + date + ", type=" + type + ", lieu=" + lieu + ", description=" + description + ", titre=" + titre + ", even_pic=" + even_pic + '}';
-    }
-    */
+
 }
 
 
