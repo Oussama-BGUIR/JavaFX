@@ -7,21 +7,42 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4FC031;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.CategorieController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.CategorieController">
     <stylesheets>
-        <URL value="@categorie.css" />
+        <URL value="@produit.css" />
     </stylesheets>
    <children>
-      <Label layoutX="358.0" layoutY="14.0" prefHeight="18.0" prefWidth="177.0" text="Liste des Categories" />
-      <ListView fx:id="AffichageListeCategoriesBackfx" layoutX="42.0" layoutY="74.0" prefHeight="137.0" prefWidth="543.0" />
-      <Button layoutX="447.0" layoutY="283.0" mnemonicParsing="false" onAction="#ajouterCategorieBack" text="Ajouter" />
-      <Button layoutX="275.0" layoutY="283.0" mnemonicParsing="false" onAction="#modifierCategorieBack" text="Modifier" />
-      <Button layoutX="134.0" layoutY="289.0" mnemonicParsing="false" onAction="#supprimerCategorieBack" text="Supprimer" />
-      <ImageView fitHeight="116.0" fitWidth="77.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/elitegym.jpg" />
-         </image>
-      </ImageView>
+      <Label layoutX="575.0" layoutY="31.0" prefHeight="36.0" prefWidth="249.0" text="Liste des Categories">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Label>
+      <ListView fx:id="AffichageListeCategoriesBackfx" layoutX="282.0" layoutY="81.0" prefHeight="385.0" prefWidth="876.0" />
+      <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <ImageView fitHeight="256.0" fitWidth="200.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button cache="true" layoutX="1011.0" layoutY="518.0" mnemonicParsing="false" onAction="#supprimerCategorieBack" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #2A303D;" styleClass="btn" text="Supprimer" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Button>
+      <Button cache="true" layoutX="681.0" layoutY="518.0" mnemonicParsing="false" onAction="#modifierCategorieBack" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #2A303D;" styleClass="btn" text="Modifier" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Button>
+      <Button cache="true" layoutX="334.0" layoutY="518.0" mnemonicParsing="false" onAction="#ajouterCategorieBack" prefHeight="31.0" prefWidth="158.0" style="-fx-background-color: #2A303D;" styleClass="btn" text="Ajouter" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Button>
+        
    </children>
 </AnchorPane>

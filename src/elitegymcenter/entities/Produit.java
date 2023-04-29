@@ -5,6 +5,8 @@
  */
 package elitegymcenter.entities;
 
+import java.sql.Date;
+
 
 
 /**
@@ -12,22 +14,51 @@ package elitegymcenter.entities;
  * @author LENOVO
  */
 public class Produit {
-    private int id , categorie_id , prix ;
-  
+    private int id , prix ;
+    private Categorie category;
+    String categorie_id ;
     private String nom , description , image ;
+    private int quantite_commande ;
+    private Date date;
+
+    public Produit(int id, String nom,int prix, int quantite_commande, Date date) {
+        this.id = id;
+        this.nom = nom;
+        this.prix=prix;
+        this.quantite_commande = quantite_commande;
+        this.date = date;
+    }
     
 
-        public Produit(int categorie_id, int prix, String nom, String description, String image) {
+      public Produit(Categorie category, int prix, String nom, String description, String image) {
+        this.category = category;
+        this.prix = prix;
+        this.nom = nom;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Categorie getCategory() {
+        return category;
+    }
+
+    public void setCategory(Categorie category) {
+        this.category = category;
+    }
+      
+      /*
+        public Produit(String categorie_id, int prix, String nom, String description, String image) {
         this.categorie_id = categorie_id;
         this.prix = prix;
         this.nom = nom;
         this.description = description;
         this.image = image;
     }
+    */ 
     
-    public Produit(int id, int categorie_id, int prix, String nom, String description, String image) {
+    public Produit(int id,  int prix,Categorie category , String nom, String description, String image) {
         this.id = id;
-        this.categorie_id = categorie_id;
+        this.category = category;
         this.prix = prix;
         this.nom = nom;
         this.description = description;
@@ -49,12 +80,12 @@ public class Produit {
         this.id = id;
     }
 
-    public int getCategorie_id() {
+    public String getCategorie_id() {
         return categorie_id;
     }
 
-    public void setCategorie_id(int menu_id) {
-        this.categorie_id = menu_id;
+    public void setCategorie_id(String categorie_id) {
+        this.categorie_id = categorie_id;
     }
 
     public int getPrix() {
@@ -89,25 +120,12 @@ public class Produit {
         this.image = image;
     }
 
-    
-  
-
-   
-    
-    
-    
-    
+ 
 
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id +  ", categorie_id=" + categorie_id +  ", nom=" + nom + ", description=" + description + ", prix=" + prix + ",  image=" + image + '}';
+        return "Produit{" + "id=" + id + ", prix=" + prix + ", category=" + category + ", nom=" + nom + ", description=" + description + ", image=" + image + '}';
     }
-    /*
-   @Override
-    public String toString() {
-        return "Reservation{" + "id=" + id + ", evenement_id=" + evenement_id + ", paiement=" + paiement + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", telephone=" + telephone +  '}';
-    }
-    */
     
 
         

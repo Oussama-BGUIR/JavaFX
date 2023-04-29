@@ -17,4 +17,5 @@ public interface ProduitCRUD {
     public List<Produit> afficherProduit();
     public void supprimerProduit(int id);
     public void modifierProduit(Produit P);
+    public void supprimerPanier(int id);
 }

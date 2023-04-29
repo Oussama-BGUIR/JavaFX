@@ -12,10 +12,12 @@ import java.util.List;
  *
  * @author LENOVO
  */
-public interface CategorieCRUD {
+public interface CategorieCRUD<T> {
     public void ajouterCategorie(Categorie C);
     public List<Categorie> afficherCategorie();
      public void supprimerCategorie(int id);
      public void modifierCategorie(Categorie C);
+     T get(int id);
+
     
 }

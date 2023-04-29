@@ -7,6 +7,7 @@ package elitegymcenter.services;
 
 import elitegymcenter.interfaces.CategorieCRUD;
 import elitegymcenter.entities.Categorie;
+import elitegymcenter.entities.Produit;
 
 import elitegymcenter.utils.MyDB;
 import java.sql.Connection;
@@ -21,19 +22,12 @@ import java.util.List;
  *
  * @author LENOVO
  */
-public class ServiceCategorieCRUD implements CategorieCRUD{
+public class ServiceCategorieCRUD implements CategorieCRUD<Categorie>{
     Statement ste;
     Connection conn = MyDB.getInstance().getConn();
     
-    
-    
-    
+
     @Override
-    
-
-
-
-    
         public void ajouterCategorie(Categorie C) {
         try {
             String req = "INSERT INTO `categorie`( `nom`, `description`) VALUES (?, ?)";
@@ -99,7 +93,28 @@ public class ServiceCategorieCRUD implements CategorieCRUD{
             System.out.println(ex.getMessage());
         }
     }
-}
 
+    
+    
+ 
+
+    @Override
+public Categorie get(int id) {
+Categorie categorieProduit = null;
+try {
+String req = "SELECT * FROM categorie WHERE id=?";
+PreparedStatement ps = conn.prepareStatement(req);
+ps.setInt(1, id);
+ResultSet rs = ps.executeQuery();
+if (rs.next()) {
+categorieProduit = new Categorie(rs.getInt("id"), rs.getString("nom"), rs.getString("description"));
+}
+} catch (SQLException exception) {
+System.out.println(exception.getMessage());
+}
+return categorieProduit;
+}
+}
+    
 
 

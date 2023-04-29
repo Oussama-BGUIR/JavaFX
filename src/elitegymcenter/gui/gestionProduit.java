@@ -45,7 +45,9 @@ public class gestionProduit extends Application {
         */
      
      try {
-            Parent root = FXMLLoader.load(getClass().getResource("Produit.fxml"));
+           // Parent root = FXMLLoader.load(getClass().getResource("Produit.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("Produit.fxml"));
+
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Gestion Produit");
