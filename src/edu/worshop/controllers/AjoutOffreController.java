@@ -5,12 +5,15 @@
  */
 package edu.worshop.controllers;
 
+import edu.workshop.services.Abonnement1CRUD;
 import edu.workshop.services.Offre1CRUD;
+import edu.worshop.model.Abonnement;
 import edu.worshop.model.Offre;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -19,15 +22,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -47,6 +56,10 @@ public class AjoutOffreController implements Initializable {
     @FXML
     private DatePicker dateFinfx;
     
+ 
+    @FXML
+    private ComboBox<Abonnement> Abonnementfx;
+    
     private boolean verificationPoints;
     private boolean verificationPrix;
     private boolean verificationPourcentage;
@@ -57,14 +70,19 @@ public class AjoutOffreController implements Initializable {
     private Label labelPourcentage;
     @FXML
     private Label labelPoints;
+    
+    Abonnement1CRUD acs=new Abonnement1CRUD();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+        Abonnementfx.getItems().addAll(acs.afficherAbonnement());
+        
+    }   
+    
 
     @FXML
     private void AjoutOffre(ActionEvent event) 
@@ -74,6 +92,7 @@ public class AjoutOffreController implements Initializable {
         double pourcentage = Double.valueOf(pourcentageOffrefx.getText());
         Date date_debut = java.sql.Date.valueOf(dateDebutfx.getValue());
         Date date_fin = java.sql.Date.valueOf(dateFinfx.getValue());
+        
         
          LocalDate currentDate = LocalDate.now(); // Gets the current date
         String dateStringlocal = currentDate.toString();
@@ -115,9 +134,17 @@ public class AjoutOffreController implements Initializable {
         
            
             showAlert("Etes vous sur d'ajouter un offre?");
-            Offre E = new Offre(AfficherAbonnementBackController.E.getId(),points,prix,pourcentage,date_debut,date_fin);
+            Offre E = new Offre(Abonnementfx.getValue().getId(),points,prix,pourcentage,date_debut,date_fin);
             Offre1CRUD offre1 = new Offre1CRUD();
             offre1.ajouterOffre(E);
+             Notifications notificationBuilder = Notifications.create()
+                .title("Offre ajouté avec succès")
+                .text("Votre offre a été sauvegardé avec succès")
+                .hideAfter(Duration.seconds(7))
+                .position(Pos.CENTER)
+                .graphic(null)
+                .darkStyle();
+                notificationBuilder.showInformation();
 
             try {
 
@@ -162,13 +189,14 @@ public class AjoutOffreController implements Initializable {
         }
 
         if (nbChar == 0) {
-            labelPoints.setText("number valide");
-            //labeltel.setTextFill(Color.GREEN);
+            labelPoints.setText("Points valide");
+            labelPoints.setTextFill(Color.GREEN);
 
             verificationPoints = false;
         } else {
-            labelPoints.setText("invalide number \n"
+            labelPoints.setText("invalide Points \n"
                     + " Il exist des char");
+            labelPoints.setTextFill(Color.RED);
             verificationPoints = true;
 
         }
@@ -193,12 +221,12 @@ public class AjoutOffreController implements Initializable {
         }
 
         if (nbChar == 0) {
-            labelPrix.setText("number valide");
-            //labeltel.setTextFill(Color.GREEN);
+            labelPrix.setText("Prix valide");
+            labelPrix.setTextFill(Color.GREEN);
 
             verificationPrix = false;
         } else {
-            labelPrix.setText("invalide number \n"
+            labelPrix.setText("invalide Prix \n"
                     + " Il exist des char");
             verificationPrix = true;
 
@@ -222,19 +250,36 @@ public class AjoutOffreController implements Initializable {
         }
 
         if (nbChar == 0) {
-            labelPourcentage.setText("number valide");
-            //labeltel.setTextFill(Color.GREEN);
+            labelPourcentage.setText("Pourcentage valide");
+            labelPourcentage.setTextFill(Color.GREEN);
 
             verificationPoints = false;
         } else {
-            labelPourcentage.setText("invalide number \n"
+            labelPourcentage.setText("invalide Pourcentage \n"
                     + " Il exist des char");
             verificationPoints = true;
 
         }
 
     
-}
+    }
+    
+    @FXML
+    private void retourlisteOffre(ActionEvent event) 
+    {
+        try {
+
+                Parent page1= FXMLLoader.load(getClass().getResource("/edu/worshop/gui/AfficherOffre.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException ex) {
+                System.out.println("Erreur\n");
+                Logger.getLogger(AfficherAbonnementBackController.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+    }
 }
 
- 

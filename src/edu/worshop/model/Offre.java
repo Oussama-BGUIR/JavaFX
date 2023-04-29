@@ -5,6 +5,7 @@
  */
 package edu.worshop.model;
 import java.sql.Date;
+import edu.worshop.model.Abonnement;
 
 
 /**
@@ -15,6 +16,28 @@ public class Offre {
     private int id, abonnement_nom_id, points;
     private double prix, pourcentage;
     private Date date_debut, date_fin;
+    private Abonnement Abonement ;
+
+    public Offre(int points, double prix, double pourcentage, Date date_debut, Date date_fin, Abonnement Abonement) {
+        this.points = points;
+        this.prix = prix;
+        this.pourcentage = pourcentage;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.Abonement = Abonement;
+    }
+
+    public Abonnement getAbonement() {
+        return Abonement;
+    }
+
+    public void setAbonement(Abonnement Abonement) {
+        this.Abonement = Abonement;
+    }
+    
+    
+    
+    
     
     public Offre(int abonnement_nom_id, int points, double prix, double pourcentage, Date date_debut, Date date_fin) {
         this.abonnement_nom_id = abonnement_nom_id;

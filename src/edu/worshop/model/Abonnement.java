@@ -83,7 +83,9 @@ public class Abonnement {
 
     @Override
     public String toString() {
-        return "Abonnement{" + "id=" + id + ", numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", type=" + type + '}';
+        //return "Abonnement{" + "id=" + id + ", numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", type=" + type + '}';
+            return  " Nom : " + nom ;
+
     }
     
     

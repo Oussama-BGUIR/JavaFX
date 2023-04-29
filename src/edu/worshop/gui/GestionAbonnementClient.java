@@ -19,8 +19,10 @@ import javafx.stage.Stage;
  *
  * @author shini
  */
-public class GestionAbonnement extends Application {
+public class GestionAbonnementClient extends Application
+{
     
+   
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
@@ -37,7 +39,7 @@ public class GestionAbonnement extends Application {
         //root.getChildren().add(btn);
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherAbonnementBack.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AjoutAbonnementFront.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Gestion Abonnement");
@@ -58,3 +60,5 @@ public class GestionAbonnement extends Application {
     }
     
 }
+
+

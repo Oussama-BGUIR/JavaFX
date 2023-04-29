@@ -6,6 +6,7 @@
 package edu.worshop.controllers;
 
 import edu.workshop.services.Abonnement1CRUD;
+import edu.workshop.services.Emailsender;
 import static edu.worshop.controllers.AfficherAbonnementBackController.email;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import edu.worshop.model.Abonnement;
 
+
 import java.io.IOException;
 import static java.lang.String.valueOf;
 import java.util.logging.Level;
@@ -24,13 +26,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -52,7 +59,7 @@ public class AjoutAbonnementFrontController implements Initializable {
     
     private boolean verificationNumero;
   
-    
+    @FXML
     private final String[] typeAbonnementfxVariable = {"Manuelle", "trimestrielle", "Anuelle"};
     @FXML
     private Label labeltel;
@@ -61,7 +68,7 @@ public class AjoutAbonnementFrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       // TODO
         typeAbonnementfx.getItems().addAll(typeAbonnementfxVariable);
        
     }    
@@ -75,6 +82,7 @@ public class AjoutAbonnementFrontController implements Initializable {
         int numero = Integer.valueOf(numeroAbonnementfx.getText());
         String email = emailAbonnementfx.getText();
         String type = typeAbonnementfx.getValue();
+        
         
         
         
@@ -99,15 +107,48 @@ public class AjoutAbonnementFrontController implements Initializable {
         }else if (verifEmail(emailAbonnementfx))
         {
              showAlert("l'email est invalide!");
-        }
-        
-        
-         else {
+        } else {
             
             showAlert("Etes vous sur d'ajouter un abonnement?");
             Abonnement E = new Abonnement(numero,nom,prenom,email,type);
             Abonnement1CRUD abonnement1 = new Abonnement1CRUD();
             abonnement1.ajouterAbonnement(E);
+            
+            // Récupérer la valeur de l'e-mail du champ de saisie
+              String emailDestinataire = emailAbonnementfx.getText();
+              
+            String message = "Bienvenue à Elite Gym\n"
+                        + "\n"
+                        + "Votre abonnement est ajouté par:\n"
+                        + "\n"
+                        +  "le nom  : " + nom  + "\n"
+                        + "le prenom  : " + prenom + "\n"
+                        + "le numero  : " + numero  + "\n"
+                        + "l'email  : " + email + "\n"
+                        + "le type  : " + type  + "\n"
+                       
+                        //+ "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                        + "\n";
+
+              //  Emailsender.sendEmail_add("lina.fakhfakh@esprit.tn", message);
+                Emailsender.sendEmail_add(emailDestinataire,message);
+               
+                  /*  Notifications notificationBuilder = Notifications.create()
+                .title("Abonnemet ajouté")
+                .text("saved")
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.BOTTOM_RIGHT);
+                 notificationBuilder.darkStyle();
+                 notificationBuilder.show();*/
+                 
+                 Notifications notificationBuilder = Notifications.create()
+                .title("Abonnement ajouté avec succès")
+                .text("Votre Abonnement de nom " + nom + " a été sauvegardé avec succès")
+                .hideAfter(Duration.seconds(7))
+                .position(Pos.CENTER)
+                .graphic(null)
+                .darkStyle();
+                notificationBuilder.showInformation();
         
         try {
 
@@ -186,7 +227,8 @@ public class AjoutAbonnementFrontController implements Initializable {
 
         if (nbChar == 0) {
             labeltel.setText("number valide");
-            //labeltel.setTextFill(Color.GREEN);
+            labeltel.setTextFill(Color.GREEN);
+             
 
             verificationNumero = false;
         } else {
@@ -204,6 +246,9 @@ public class AjoutAbonnementFrontController implements Initializable {
     
     
 }
+    
+    
+
     
     
     

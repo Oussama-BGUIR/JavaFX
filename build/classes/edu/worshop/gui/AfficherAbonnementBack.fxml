@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AfficherAbonnementBackController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AfficherAbonnementBackController">
+    <stylesheets>
+        <URL value="@menu.css" />
+    </stylesheets>
    <children>
-      <ListView fx:id="affichageAbonnementFrontfx" layoutX="79.0" layoutY="150.0" prefHeight="266.0" prefWidth="720.0" />
-      <Text layoutX="363.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher les abonnements" />
-      <Button layoutX="304.0" layoutY="485.0" mnemonicParsing="false" onAction="#supprimerAbonnementBack" text="Supprimer" />
-      <Button layoutX="416.0" layoutY="485.0" mnemonicParsing="false" onAction="#modifierAbonnementBack" text="modifier" />
-      <Button layoutX="516.0" layoutY="485.0" mnemonicParsing="false" onAction="#ajouterAbonnementFront" text="Ajouter" />
-      <Button layoutX="216.0" layoutY="485.0" mnemonicParsing="false" onAction="#ajoutOffre" prefHeight="30.0" prefWidth="64.0" text="Offre" />
+      <Label layoutX="295.0" layoutY="34.0" prefHeight="36.0" prefWidth="276.0" text="Liste des Abonnements">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Label>
+      <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="44.0" layoutY="46.0" mnemonicParsing="false" onAction="#modifierAbonnementBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="44.0" layoutY="106.0" mnemonicParsing="false" onAction="#supprimerAbonnementBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <Button layoutX="44.0" layoutY="282.0" mnemonicParsing="false" onAction="#QrCodeAbonnement" prefHeight="36.0" prefWidth="158.0" text="Qr code" />
+            <ImageView fx:id="code_qr" fitHeight="189.0" fitWidth="191.0" layoutX="23.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="44.0" layoutY="166.0" mnemonicParsing="false" onAction="#triAbonnementBack" prefHeight="36.0" prefWidth="158.0" text="Trier par Nom" />
+            <Button layoutX="44.0" layoutY="226.0" mnemonicParsing="false" onAction="#triAbonnementBackPrenom" prefHeight="36.0" prefWidth="158.0" text="Trier par Prénom" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="1052.0" layoutY="19.0" mnemonicParsing="false" onAction="#Offreliste" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #2A303D;" text="Aller aux offres" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+      <TableView fx:id="affichageAbonnementFrontfx" layoutX="316.0" layoutY="104.0" prefHeight="446.0" prefWidth="777.0">
+        <columns>
+          <TableColumn fx:id="idfx" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="nomfx" prefWidth="125.0" text="Nom" />
+            <TableColumn fx:id="prenomfx" prefWidth="150.0" text="Prénom" />
+            <TableColumn fx:id="numerofx" prefWidth="126.0" text="Numéro" />
+            <TableColumn fx:id="emailfx" prefWidth="167.0" text="Email" />
+            <TableColumn fx:id="typefx" minWidth="0.0" prefWidth="133.0" text="Type" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtfieldrecherche" layoutX="627.0" layoutY="28.0" prefHeight="42.0" prefWidth="347.0" promptText="Recherche par Nom" />
    </children>
 </AnchorPane>

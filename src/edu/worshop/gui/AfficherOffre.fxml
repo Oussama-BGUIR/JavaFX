@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AfficherOffreController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AfficherOffreController">
+    <stylesheets>
+        <URL value="@menu.css" />
+    </stylesheets>
    <children>
-      <ListView fx:id="affichageOffrefx" layoutX="90.0" layoutY="167.0" prefHeight="266.0" prefWidth="720.0" />
-      <Text layoutX="373.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher les offres" />
-      <Button layoutX="314.0" layoutY="495.0" mnemonicParsing="false" onAction="#supprimerOffre" text="Supprimer" />
-      <Button layoutX="426.0" layoutY="495.0" mnemonicParsing="false" onAction="#modifierOffre" text="modifier" />
+      <Label layoutX="316.0" layoutY="43.0" prefHeight="36.0" prefWidth="222.0" text="Liste des offres">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Label>
+      <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="45.0" layoutY="68.0" mnemonicParsing="false" onAction="#AjouterOffre" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
+            <Button layoutX="45.0" layoutY="125.0" mnemonicParsing="false" onAction="#modifierOffre" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="45.0" layoutY="182.0" mnemonicParsing="false" onAction="#supprimerOffre" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <Button layoutX="45.0" layoutY="377.0" mnemonicParsing="false" onAction="#StatistiqueOffre" prefHeight="36.0" prefWidth="158.0" text="Statistique" />
+            
+         </children>
+      </AnchorPane>
+      <Button layoutX="988.0" layoutY="19.0" mnemonicParsing="false" onAction="#listeAbonnements" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: #2A303D;" text="Aller aux Abonnements" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+      <TableView fx:id="affichageOffrefx" layoutX="302.0" layoutY="122.0" prefHeight="432.0" prefWidth="767.0">
+        <columns>
+          <TableColumn fx:id="idfx" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="abonnement_idfx" prefWidth="111.0" text="Abonnement Id" />
+            <TableColumn fx:id="pointsfx" prefWidth="107.0" text="Points" />
+            <TableColumn fx:id="prixfx" prefWidth="115.0" text="Prix" />
+            <TableColumn fx:id="pourcentagefx" prefWidth="111.0" text="Pourcentage" />
+            <TableColumn fx:id="datedebutfx" prefWidth="124.0" text="Date debut" />
+            <TableColumn fx:id="datefinfx" prefWidth="119.0" text="Date fin" />
+        </columns>
+      </TableView>
+      <TextField fx:id="recherchePoints" layoutX="584.0" layoutY="40.0" prefHeight="42.0" prefWidth="352.0" promptText="Recherche Par Points" />
    </children>
 </AnchorPane>
