@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="939.0" style="-fx-background-color: #B0F2B6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.RdvController">
+   <children>
+      <Label layoutX="216.0" layoutY="19.0" prefHeight="36.0" prefWidth="272.0" text="Liste des rendez-vous">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="562.0" prefWidth="183.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="28.0" layoutY="194.0" mnemonicParsing="false" onAction="#ajouterRdvBack" prefHeight="36.0" prefWidth="132.0" text="Ajouter" />
+            <Button layoutX="28.0" layoutY="245.0" mnemonicParsing="false" onAction="#modifierRdvBack" prefHeight="36.0" prefWidth="132.0" text="Modifier" />
+            <Button layoutX="28.0" layoutY="292.0" mnemonicParsing="false" onAction="#supprimerRdvBack" prefHeight="36.0" prefWidth="132.0" text="Supprimer" />
+            <ImageView fitHeight="150.0" fitWidth="164.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logoelitegym.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="26.0" layoutY="379.0" mnemonicParsing="false" onAction="#QrCodeRdv" prefHeight="36.0" prefWidth="132.0" text="QR Code" />
+            <ImageView fx:id="code_qr" fitHeight="121.0" fitWidth="150.0" layoutX="19.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <TextField fx:id="searchRdv" layoutX="523.0" layoutY="19.0" prefHeight="36.0" prefWidth="229.0" promptText="Recherche" />
+      <TableView fx:id="AffichageListeRdvsBackfx" layoutX="197.0" layoutY="133.0" prefHeight="385.0" prefWidth="719.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="57.0" text="id" />
+          <TableColumn fx:id="nom" prefWidth="81.0" text="Nom" />
+            <TableColumn fx:id="prenom" prefWidth="74.0" text="Prenom" />
+            <TableColumn fx:id="email" prefWidth="88.0" text="Email" />
+            <TableColumn fx:id="numtel" prefWidth="102.0" text="Numero Tel" />
+            <TableColumn fx:id="date" prefWidth="90.0" text="Date" />
+            <TableColumn fx:id="description" prefWidth="120.0" text="Description" />
+            <TableColumn fx:id="nom_nutritioniste_id" prefWidth="120.0" text="Nutritionniste" />
+        </columns>
+      </TableView>
+      <Button fx:id="triernom" layoutX="330.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Trier par Nom" />
+      <Button fx:id="trieremail" layoutX="454.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Trier par Email" />
+      <Button fx:id="trierid" layoutX="204.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Trier par ID" />
+      <Button layoutX="793.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToAdmin" prefHeight="36.0" prefWidth="115.0" text="Retour" />
+   </children>
+</AnchorPane>
