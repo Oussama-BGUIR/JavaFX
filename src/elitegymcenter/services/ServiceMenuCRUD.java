@@ -140,6 +140,27 @@ public class ServiceMenuCRUD implements MenuCRUD{
     
     
 
+    @Override
+    public Menu get(int id) {
+        Menu menu=null;
+        try {
+            String req="SELECT * FROM menu " +
+                    "where id=?";
+            PreparedStatement ps=conn.prepareStatement(req);
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+
+                Menu m = new Menu(rs.getInt("id"),  rs.getInt("calorie"), rs.getBoolean("disponibilite") ,rs.getString("nom"), rs.getString("description"), rs.getString("image"));
+                menu=m;
+
+            }
+        }catch (SQLException exception){
+            System.out.println(exception.getMessage());
+        }
+
+        return menu;
+    }
     
 }
 

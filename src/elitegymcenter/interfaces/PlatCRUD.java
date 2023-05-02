@@ -17,4 +17,5 @@ public interface PlatCRUD {
     public List<Plat> afficherPlat();
     public void supprimerPlat(int id);
     public void modifierPlat(Plat P);
+    public void supprimerPanier (int id);
 }

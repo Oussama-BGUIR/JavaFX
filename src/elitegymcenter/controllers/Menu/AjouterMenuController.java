@@ -6,6 +6,7 @@
 package elitegymcenter.controllers.Menu;
 
 import elitegymcenter.entities.Menu;
+import elitegymcenter.services.Emailsender;
 import elitegymcenter.services.ServiceMenuCRUD;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +34,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -220,6 +224,28 @@ public class AjouterMenuController implements Initializable {
         Menu M = new Menu(calorie, disponibilite, nom, description, imagePath);
         ServiceMenuCRUD ServiceMenu = new ServiceMenuCRUD();
         ServiceMenu.ajouterMenu(M);
+        
+                    String message = "Bienvenue à Elite Gym Center\n"
+                        + "\n"
+                        + "Un Menu est ajouté a notre restaurant :\n"
+                        + "\n"
+                        +  "le nom  : " + nom  + "\n"
+                        + "qui est  : " + description + "\n"
+
+                       
+                        //+ "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                        + "\n";
+
+                Emailsender.sendEmail_add("ousama.abassi@gmail.com",message);
+        
+                         Notifications notificationBuilder = Notifications.create()
+                 .title("succès d'ajout ")
+                 .text("le menu " +nom+ " a été ajouté avec succès !!")
+                 .hideAfter(Duration.seconds(5))
+                 .position(Pos.CENTER)
+                 .graphic(null)
+                 .darkStyle();
+             notificationBuilder.showInformation();
         
         try {
 

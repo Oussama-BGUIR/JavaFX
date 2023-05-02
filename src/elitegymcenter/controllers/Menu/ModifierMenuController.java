@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,6 +34,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -223,6 +226,15 @@ public class ModifierMenuController implements Initializable {
         Menu men = new Menu(MenuController.M.getId(), calorie, disponibilite, nom, description, imagePath );
       
         inter.modifierMenu(men);
+        
+                         Notifications notificationBuilder = Notifications.create()
+                 .title("succès de modification")
+                 .text("le menu " +nom+ "a été modifié avec succès !!")
+                 .hideAfter(Duration.seconds(5))
+                 .position(Pos.CENTER)
+                 .graphic(null)
+                 .darkStyle();
+             notificationBuilder.showInformation();
         
         try {
 

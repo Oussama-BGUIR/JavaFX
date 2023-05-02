@@ -8,6 +8,7 @@ package elitegymcenter.controllers.Plat;
 import elitegymcenter.controllers.Menu.*;
 import elitegymcenter.entities.Menu;
 import elitegymcenter.entities.Plat;
+import elitegymcenter.services.Emailsender;
 import elitegymcenter.services.ServiceMenuCRUD;
 import elitegymcenter.services.ServicePlatCRUD;
 import java.io.File;
@@ -16,10 +17,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,9 +38,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -82,6 +92,7 @@ public class AjouterPlatController implements Initializable {
 
     @FXML
     private Label labelmenuid;
+
 
     
     
@@ -163,7 +174,7 @@ public class AjouterPlatController implements Initializable {
     }
         @FXML
     private void verifierDesc(KeyEvent event) {
-                int nbNonChar = 0;
+            int nbNonChar = 0;
             String description = descriptionPlatfx.getText().trim(); // Enlever les espaces en début et en fin
             for (int i = 0; i < description.length(); i++) {
                 char ch = description.charAt(i);
@@ -274,6 +285,65 @@ public class AjouterPlatController implements Initializable {
         ServicePlatCRUD ServicePlat = new ServicePlatCRUD();
         ServicePlat.ajouterPlat(P);
         
+              
+            String message = "Bienvenue à Elite Gym Center\n"
+                        + "\n"
+                        + "Un plat est ajouté a notre restaurant :\n"
+                        + "\n"
+                        +  "le nom  : " + nom  + "\n"
+                        + "qui est  : " + description + "\n"
+                        + "le prix est  : " + prix  + "\n"
+
+                       
+                        //+ "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                        + "\n";
+
+                Emailsender.sendEmail_add("ousama.abassi@gmail.com",message);
+        
+               /*
+                String title = "Plat ajouté avec succès";
+                String messagenotif = "L'ajout d'ajout a été sauvegardé avec succès";
+
+                Label titleLabel = new Label(title);
+                titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
+                Label messageLabel = new Label(message);
+                messageLabel.setStyle("-fx-font-size: 14px;");
+
+                StackPane root = new StackPane();
+                root.setPrefSize(300, 100);
+                root.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10px; -fx-border-color: #2196F3; -fx-border-radius: 10px; -fx-padding: 20px;");
+                root.getChildren().addAll(titleLabel, messageLabel);
+
+                Stage stage1 = new Stage();
+                Scene scene1 = new Scene(root);
+                scene1.setFill(Color.TRANSPARENT);
+                stage1.setScene(scene);
+                stage1.initStyle(StageStyle.TRANSPARENT);
+                stage1.setAlwaysOnTop(true);
+
+                Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+                double x = primaryScreenBounds.getWidth() - stage1.getWidth() - 20;
+                double y = primaryScreenBounds.getHeight() - stage1.getHeight() - 20;
+                stage1.setX(x);
+                stage1.setY(y);
+
+                Timeline timeline = new Timeline(
+                        new KeyFrame(Duration.seconds(5), e -> stage1.close())
+                );
+                timeline.play();
+
+                stage1.show();
+                */
+               
+             Notifications notificationBuilder = Notifications.create()
+                 .title("succès d'ajout")
+                 .text("le plat " + nom + " a été ajouté avec succès !!")
+                 .hideAfter(Duration.seconds(7))
+                 .position(Pos.CENTER)
+                 .graphic(null)
+                 .darkStyle();
+             notificationBuilder.showInformation();
+             
         try {
 
             Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Plat/Plat.fxml"));
@@ -289,6 +359,7 @@ public class AjouterPlatController implements Initializable {
         }
             
         }
+                
 
                    
     }

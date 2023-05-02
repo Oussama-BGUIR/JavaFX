@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author ousam
  */
-public interface MenuCRUD {
+public interface MenuCRUD<T> {
     public void ajouterMenu(Menu M);
     public List<Menu> afficherMenu();
      public void supprimerMenu(int id);
      public void modifierMenu(Menu M);
-
+     T get (int id );
     
 }

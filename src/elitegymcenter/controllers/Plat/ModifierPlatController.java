@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,6 +39,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -279,6 +282,15 @@ public class ModifierPlatController implements Initializable {
         Plat pl = new Plat(PlatController.P.getId(),menuidfx_modifier.getValue().getId(), calorie, prix, disponibilte , nom, description, imagePath );
       
         inter.modifierPlat(pl);
+        
+                     Notifications notificationBuilder = Notifications.create()
+                 .title("succès de modification ")
+                 .text("le plat " + nom + " a été modifié avec succès !!")
+                 .hideAfter(Duration.seconds(5))
+                 .position(Pos.CENTER)
+                 .graphic(null)
+                 .darkStyle();
+             notificationBuilder.showInformation();
         
         try {
 

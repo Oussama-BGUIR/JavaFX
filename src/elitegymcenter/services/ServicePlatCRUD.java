@@ -93,7 +93,7 @@ public class ServicePlatCRUD implements PlatCRUD{
         return list;
     }
     
-    @Override
+   @Override
     public void supprimerPlat(int id) {
         try {
             String req = "DELETE FROM `plat` WHERE id = " + id;
@@ -127,5 +127,16 @@ public class ServicePlatCRUD implements PlatCRUD{
     }
     
     
+    @Override
+    public void supprimerPanier(int id) {
+          try {
+            String req = "DELETE FROM commande WHERE id = " + id;
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("Plat deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
 }

@@ -18,12 +18,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -131,6 +134,16 @@ public class MenuController implements Initializable {
             Menu M = list.getSelectionModel().getSelectedItem();
             inter.supprimerMenu(M.getId());
             list.getItems().remove(selectedIndex);
+            
+                             Notifications notificationBuilder = Notifications.create()
+                 .title("succès de suppression")
+                 .text("le menu a été supprimé avec succès !!")
+                 .hideAfter(Duration.seconds(5))
+                 .position(Pos.CENTER)
+                 .graphic(null)
+                 .darkStyle();
+             notificationBuilder.showInformation();
+            
         } else {
             showAlert("sélectionner un menu pour le supprimer ");
         }

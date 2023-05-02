@@ -5,6 +5,8 @@
  */
 package elitegymcenter.entities;
 
+import java.sql.Date;
+
 
 
 /**
@@ -16,6 +18,9 @@ public class Plat {
     private int id , menu_id , calorie , prix ;
     private boolean disponibilte ;
     private String nom , description , image ;
+    
+    private int quantite_commande ;
+    private Date date;
 
     public Plat(Menu menu, int id, int calorie, int prix, boolean disponibilte, String nom, String description, String image) {
         this.menu = menu;
@@ -26,6 +31,14 @@ public class Plat {
         this.nom = nom;
         this.description = description;
         this.image = image;
+    }
+    
+    public Plat(int id, String nom,int prix, int quantite_commande, Date date) {
+        this.id = id;
+        this.nom = nom;
+        this.prix=prix;
+        this.quantite_commande = quantite_commande;
+        this.date = date;
     }
 
     public Plat(Menu menu, int calorie, int prix, boolean disponibilte, String nom, String description, String image) {

@@ -19,18 +19,20 @@
          <font>
             <Font name="System Bold Italic" size="25.0" />
          </font></Label>
-      <TextField layoutX="495.0" layoutY="22.0" prefHeight="36.0" prefWidth="467.0" promptText="Recherche" />
-      <ListView fx:id="AffichageListePlatBackfx" layoutX="242.0" layoutY="81.0" prefHeight="473.0" prefWidth="950.0" />
+      <TextField fx:id="rechercheplats" layoutX="495.0" layoutY="22.0" prefHeight="36.0" prefWidth="467.0" promptText="Recherche" />
+      <ListView fx:id="AffichageListePlatBackfx" layoutX="242.0" layoutY="89.0" prefHeight="466.0" prefWidth="950.0" />
       <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
          <children>
-            <Button layoutX="39.0" layoutY="330.0" mnemonicParsing="false" onAction="#ajouterPlatBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
-            <Button layoutX="39.0" layoutY="400.0" mnemonicParsing="false" onAction="#modifierPlatBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
-            <Button layoutX="39.0" layoutY="470.0" mnemonicParsing="false" onAction="#supprimerPlatBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
-            <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="39.0" layoutY="212.0" mnemonicParsing="false" onAction="#ajouterPlatBack" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
+            <Button layoutX="39.0" layoutY="264.0" mnemonicParsing="false" onAction="#modifierPlatBack" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="39.0" layoutY="315.0" mnemonicParsing="false" onAction="#supprimerPlatBack" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <ImageView fitHeight="213.0" fitWidth="222.0" layoutX="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/elitegym.png" />
                </image>
             </ImageView>
+            <Button layoutX="39.0" layoutY="361.0" mnemonicParsing="false" onAction="#QrCodePlat" prefHeight="36.0" prefWidth="158.0" text="QR_Code" />
+            <ImageView fx:id="code_qr" fitHeight="150.0" fitWidth="200.0" layoutX="18.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <Button layoutX="1052.0" layoutY="19.0" mnemonicParsing="false" onAction="#GoToMenu" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #2A303D;" text="Go To Menus List" textFill="WHITE">
