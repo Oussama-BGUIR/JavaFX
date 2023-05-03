@@ -9,11 +9,19 @@ import elitegymcenter.entities.Planning;
 import elitegymcenter.entities.Cours;
 import elitegymcenter.services.ServicePlanningCRUD;
 import elitegymcenter.services.ServiceCoursCRUD;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+ 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,13 +31,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -45,16 +58,15 @@ public class AjouterCoursController implements Initializable {
     @FXML
     private TextField salleCoursfx;
 
-    
+    @FXML
+	private TextField urltf;
+ 
+	 
+	
+	private File file;
     @FXML
     private TextField planningidfx;
-    
-    
-    
-    
-    
-    
-    
+ 
     @FXML
     private Label labelnom;
     
@@ -85,162 +97,94 @@ public class AjouterCoursController implements Initializable {
     private Stage stage; 
     private Scene scene;
     private Parent root;
-    
-    
-    @FXML
-    private void verifiernom(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < nomCoursfx.getText().trim().length(); i++) {
-            char ch = nomCoursfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
+	private ObservableList<String>UserList;
+
+	@FXML
+    private DatePicker date;
+	@FXML
+	private ComboBox<Planning> comboBoxUser;
+	@FXML
+	private void importer(ActionEvent event) {
+		
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("S�lectionnez un fichier PNG");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg"));
+        File fichierSelectionne = fileChooser.showOpenDialog(stage);
+
+        if (fichierSelectionne != null) {
+        	urltf.setText(fichierSelectionne.getName());
+            file = fichierSelectionne;
         }
-        if (nbNonChar == 0 && nomCoursfx.getText().trim().length() >=3) {
-            labelnom.setText ("nom valide :) ");
-            labelnom.setTextFill(Color.GREEN);
-            checknom.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelnom.setText ("le nom doit etre plus que 3 lettres !");
-            labelnom.setTextFill(Color.RED);
-            checknom.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-    /*
-        @FXML
-    private void verifierDesc(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < descriptionPlatfx.getText().trim().length(); i++) {
-            char ch = descriptionPlatfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && descriptionPlatfx.getText().trim().length() >=10) {
-            labeldescription.setText ("Description valide :) ");
-            labeldescription.setTextFill(Color.GREEN);
-            checkdescription.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labeldescription.setText ("écrivez plus que 10 lettres ! ");
-            labeldescription.setTextFill(Color.RED);
-            checkdescription.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-    */
-    /*
-        @FXML
-    private void verifierDuree(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < dureeCoursfx.getText().trim().length(); i++) {
-            char ch = dureeCoursfx.getText().charAt(i);
-            if (Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && dureeCoursfx.getText().trim().length() >=3) {
-            labelduree.setText ("duree valide :) ");
-            labelduree.setTextFill(Color.GREEN);
-            checkduree.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelduree.setText ("il faut un entier > 100 ! ");
-            
-            labelduree.setTextFill(Color.RED);
-            checkduree.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-    */
-        @FXML
-    private void verifiersalle(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < salleCoursfx.getText().trim().length(); i++) {
-            char ch = salleCoursfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && salleCoursfx.getText().trim().length() >=5) {
-            labelsalle.setText ("salle valide :) ");
-            labelsalle.setTextFill(Color.GREEN);
-            checksalle.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelsalle.setText ("Check salle !!! ");
-            labelsalle.setTextFill(Color.RED);
-            checksalle.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-         @FXML
-    private void verifierPlanningId(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < planningidfx.getText().trim().length(); i++) {
-            char ch = planningidfx.getText().charAt(i);
-            if (Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && planningidfx.getText().trim().length() <=3) {
-            labelplanningid.setText ("planning id :) ");
-            labelplanningid.setTextFill(Color.GREEN);
-            checkplanningid.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelplanningid.setText ("Check planning id !!! ");
-            labelplanningid.setTextFill(Color.RED);
-            checkplanningid.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-     
+		
+	}
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
-    }    
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO
+		
+		ServicePlanningCRUD sc = new ServicePlanningCRUD();
+		UserList = FXCollections.observableArrayList();
+		setComboBoxItems();
+ 
+		};
+		private void setComboBoxItems() {
+			ServicePlanningCRUD sc = new ServicePlanningCRUD();
+
+			// Retrieve all reclamations and their corresponding users
+			ObservableList<Planning> users = sc.afficherPlanning();
+
+			// Add the user names to the list
+
+			// Set the items of the combo box
+			comboBoxUser.setItems(users);
+			
+			comboBoxUser.setConverter(new StringConverter<Planning>() {
+	            @Override
+	            public String toString(Planning object) {
+	                if (object != null) {
+	                    return object.getDescription();
+	                } else return "";
+	            }
+
+	            @Override
+	            public Planning fromString(String string) {
+	                return comboBoxUser.getSelectionModel().getSelectedItem();
+	            }
+	        });
+		}
 
     @FXML
     private void AjoutCours(ActionEvent event) {
         
-        if(nomCoursfx.getText().isEmpty()){
-            showAlert("La case nom est vide!");
-        }else if(dureeCoursfx.getText().isEmpty()){
-            showAlert("La case duree est vide!");
-        }else if(salleCoursfx.getText().isEmpty()){
-            showAlert("La case salle est vide!");
-        }else{
-            String nom = nomCoursfx.getText();
-        String duree = dureeCoursfx.getText();
-        String salle = salleCoursfx.getText();
-        int planning_id = Integer.valueOf(planningidfx.getText());
+    	String salle;
+		String nom ;
+		salle = salleCoursfx.getText();
+ 
+		nom = nomCoursfx.getText();
+	     if (date.getValue() == null || salleCoursfx.getText().isEmpty()||nomCoursfx.getText().isEmpty()) {
+	            // Affichage d'une alerte en cas de champ vide
+	            Alert alert = new Alert(AlertType.ERROR);
+	            alert.setTitle("Erreur de saisie");
+	            alert.setHeaderText(null);
+	            alert.setContentText("Veuillez remplir tous les champs!");
+	            alert.showAndWait();
+	        }
+	     else {
 
-
-        Cours C = new Cours(planning_id, nom, duree, salle);
+	    	 LocalDate localDate = date.getValue();
+	    	 LocalDateTime localDateTime = localDate.atStartOfDay();
+        Cours C = new Cours (comboBoxUser.getSelectionModel().getSelectedItem().getId(), nom, localDateTime, salle,file.getAbsolutePath());
+ 
         ServiceCoursCRUD ServiceCours = new ServiceCoursCRUD();
         ServiceCours.ajouterCours(C);
+        Alert alert1 = new Alert(AlertType.INFORMATION);
+        alert1.setTitle("Confirmation");
+        alert1.setHeaderText(null);
+        alert1.setContentText("Ajouter Cours est avec succers!!!  " );
+        alert1.showAndWait();
         
         try {
 

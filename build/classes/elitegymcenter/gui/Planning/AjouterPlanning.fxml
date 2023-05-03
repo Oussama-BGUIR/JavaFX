@@ -15,11 +15,11 @@
         <URL value="@ajoutermenu.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="semainePlanningfx" layoutX="390.0" layoutY="70.0" onKeyReleased="#verifiernom" prefHeight="32.0" prefWidth="242.0" promptText="Semaine">
+      <TextField fx:id="semainePlanningfx" layoutX="390.0" layoutY="70.0"   prefHeight="32.0" prefWidth="242.0" promptText="Semaine">
          <font>
             <Font size="17.0" />
          </font></TextField>
-      <TextField fx:id="descriptionPlanningfx" layoutX="390.0" layoutY="138.0" onKeyReleased="#verifierDesc" prefHeight="38.0" prefWidth="242.0" promptText="DESCRIPTION">
+      <TextField fx:id="descriptionPlanningfx" layoutX="390.0" layoutY="138.0"   prefHeight="38.0" prefWidth="242.0" promptText="DESCRIPTION">
          <font>
             <Font size="16.0" />
          </font></TextField>

@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MSI/Downloads/JavaFX-oussama/src/elitegymcenter/gui/Planning/gestionPlanning.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/controllers/Cours/ModifierCoursController.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/gui/Cours/ChartController.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegym/elitegym.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/controllers/Cours/AjouterCoursController.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/utils/MyDB.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/controllers/Cours/CoursController.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/gui/Cours/AffichageCoursFront.fxml</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/services/ServiceCoursCRUD.java</file>
+            <file>file:/C:/Users/MSI/Downloads/pi-java/pi%20java/pi%20java/src/elitegymcenter/controllers/Cours/AffichageCoursFrontController.java</file>
         </group>
     </open-files>
 </project-private>

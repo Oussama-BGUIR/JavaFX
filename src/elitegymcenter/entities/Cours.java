@@ -5,89 +5,129 @@
  */
 package elitegymcenter.entities;
 
-
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author ousam
- */
-public class Cours {
-    private int id , planning_id ;
-    private String nom , duree , salle ;
-    
+ */public class Cours {
+	    private int id;
+	    private int planningId;
+	    private String nom;
+	    private LocalDateTime duree;
+	    private String salle,planningDescription,image,planningQR;
 
-        public Cours(int planning_id, String nom, String duree , String salle) {
-        this.planning_id = planning_id;
-        this.nom = nom;
-        this.duree = duree;
-        this.salle = salle;
-    }
-    
-    public Cours(int id, int planning_id, String nom, String duree , String salle) {
-        this.id = id;
-        this.planning_id = planning_id;
-        this.nom = nom;
-        this.duree = duree;
-        this.salle = salle;
-    }
-    
-    
+	    public Cours(int id, int planningId, String nom, LocalDateTime duree, String salle, String planningDescription,
+				String image, String planningQR) {
+			super();
+			this.id = id;
+			this.planningId = planningId;
+			this.nom = nom;
+			this.duree = duree;
+			this.salle = salle;
+			this.planningDescription = planningDescription;
+			this.image = image;
+			this.planningQR = planningQR;
+		}
 
-    
-    public Cours() {
-       
-    }
-    
-    
+		public String getPlanningQR() {
+			return planningQR;
+		}
 
-    public int getId() {
-        return id;
-    }
+		public void setPlanningQR(String planningQR) {
+			this.planningQR = planningQR;
+		}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+		public String getImage() {
+			return image;
+		}
 
-    public int getPlanning_id() {
-        return planning_id;
-    }
+		public void setImage(String image) {
+			this.image = image;
+		}
 
-    public void setPlanning_id(int planning_id) {
-        this.planning_id = planning_id;
-    }
+		public String getPlanningDescription() {
+			return planningDescription;
+		}
 
-    public String getNom() {
-        return nom;
-    }
+		public void setPlanningDescription(String planningDescription) {
+			this.planningDescription = planningDescription;
+		}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+		public Cours(int planningId, String nom, LocalDateTime duree, String salle,String img) {
+			super();
+			this.planningId = planningId;
+			this.nom = nom;
+			this.duree = duree;
+			this.salle = salle;
+			this.image=img;
+		}
 
-    public String getDuree() {
-        return duree;
-    }
+		public Cours(String nom, String salle) {
+			super();
+			this.nom = nom;
+			this.salle = salle;
+		}
 
-    public void setDuree(String duree) {
-        this.duree = duree;
-    }
+		public Cours(int id, int planningId, String nom, LocalDateTime duree, String salle) {
+	        this.id = id;
+	        this.planningId = planningId;
+	        this.nom = nom;
+	        this.duree = duree;
+	        this.salle = salle;
+	    }
 
-    public String getSalle() {
-        return salle;
-    }
+	    public Cours() {
+			// TODO Auto-generated constructor stub
+		}
 
-    public void setSalle(String salle) {
-        this.salle = salle;
-    }
-    
-  
+		public int getId() {
+	        return id;
+	    }
 
+	    public void setId(int id) {
+	        this.id = id;
+	    }
 
-    @Override
-    public String toString() {
-        return "Cours{" + "id=" + id +  ", planning_id=" + planning_id +  ", nom=" + nom + ", duree=" + duree + ", salle=" + salle + '}';
-    }
-   
-       
-     
-}
+	    public int getPlanningId() {
+	        return planningId;
+	    }
+
+	    public void setPlanningId(int planningId) {
+	        this.planningId = planningId;
+	    }
+
+	    public String getNom() {
+	        return nom;
+	    }
+
+	    public void setNom(String nom) {
+	        this.nom = nom;
+	    }
+
+	    public LocalDateTime getDuree() {
+	        return duree;
+	    }
+
+	    public void setDuree(LocalDateTime localDateTime) {
+	        this.duree = localDateTime;
+	    }
+
+	    public String getSalle() {
+	        return salle;
+	    }
+
+	    public void setSalle(String salle) {
+	        this.salle = salle;
+	    }
+
+		@Override
+		public String toString() {
+			return "Cours [id=" + id + ", planningId=" + planningId + ", nom=" + nom + ", duree=" + duree + ", salle="
+					+ salle + ", planningDescription=" + planningDescription + ", image=" + image + ", planningQR="
+					+ planningQR + "]";
+		}
+
+	 
+	}

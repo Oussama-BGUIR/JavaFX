@@ -6,6 +6,8 @@
 package elitegymcenter.interfaces;
 
 import elitegymcenter.entities.Cours;
+import javafx.collections.ObservableList;
+
 import java.util.List;
 
 /**
@@ -14,7 +16,7 @@ import java.util.List;
  */
 public interface CoursCRUD {
     public void ajouterCours(Cours C);
-    public List<Cours> afficherCours();
+    public ObservableList<Cours> afficherCours();
     public void supprimerCours(int id);
     public void modifierCours(Cours C);
 }

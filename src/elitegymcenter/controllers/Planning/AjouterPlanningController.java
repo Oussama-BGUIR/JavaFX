@@ -7,12 +7,18 @@ package elitegymcenter.controllers.Planning;
 
 import elitegymcenter.entities.Planning;
 import elitegymcenter.services.ServicePlanningCRUD;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Base64;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
+
+ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,11 +29,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import net.glxn.qrgen.core.image.ImageType;
+import net.glxn.qrgen.javase.QRCode;
 
 /**
  * FXML Controller class
@@ -65,56 +74,7 @@ public class AjouterPlanningController implements Initializable {
     private Scene scene;
     private Parent root;
     
-    
-    @FXML
-    private void verifiernom(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < semainePlanningfx.getText().trim().length(); i++) {
-            char ch = semainePlanningfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && semainePlanningfx.getText().trim().length() >=5) {
-            labelsemaine.setText ("nom valide :) ");
-            labelsemaine.setTextFill(Color.GREEN);
-            checksemaine.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labelsemaine.setText ("le nom doit etre plus que 5 lettres !");
-            labelsemaine.setTextFill(Color.RED);
-            checksemaine.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-        @FXML
-    private void verifierDesc(KeyEvent event) {
-        int nbNonChar = 0;
-        for (int i = 1; i < descriptionPlanningfx.getText().trim().length(); i++) {
-            char ch = descriptionPlanningfx.getText().charAt(i);
-            if (!Character.isLetter(ch)) {
-                nbNonChar++;
-            }
-        }
-        if (nbNonChar == 0 && descriptionPlanningfx.getText().trim().length() >=20) {
-            labeldescription.setText ("Description valide :) ");
-            labeldescription.setTextFill(Color.GREEN);
-            checkdescription.setImage(new Image("@../../elitegymcenter/images/CheckMark.png"));
-
-
-            // verificationUserNom = true;
-        } else {
-            labeldescription.setText ("Ã©crivez plus que 20 lettres !");
-            labeldescription.setTextFill(Color.RED);
-            checkdescription.setImage(new Image("@../../elitegymcenter/images/erreurCheckMark.png"));
-
-
-        }
-    }
-    
+     
        
     /**
      * Initializes the controller class.
@@ -126,52 +86,75 @@ public class AjouterPlanningController implements Initializable {
     }    
 
     @FXML
-    private void AjoutPlanning (ActionEvent event) {
+    private void AjoutPlanning (ActionEvent event) throws SQLException {
         
-        if(semainePlanningfx.getText().isEmpty()){
-            showAlert("La case nom est vide!");
-        }else if(descriptionPlanningfx.getText().isEmpty()){
-            showAlert("La case description est vide!");
-        }else{
-            String semaine = semainePlanningfx.getText();
-        String description = descriptionPlanningfx.getText();
+    	String semaine;
+		String description ;
+		semaine = semainePlanningfx.getText();
+ 
+		description = descriptionPlanningfx.getText();
+	     if ( descriptionPlanningfx.getText().isEmpty()||semainePlanningfx.getText().isEmpty()) {
+	            // Affichage d'une alerte en cas de champ vide
+	            Alert alert = new Alert(AlertType.ERROR);
+	            alert.setTitle("Erreur de saisie");
+	            alert.setHeaderText(null);
+	            alert.setContentText("Veuillez remplir tous les champs!");
+	            alert.showAndWait();
+	        }
+	     else {
+ 
         
+	    	  String text = "Code QR pour le planning " + semaine +"  " +description ;
+	            ByteArrayOutputStream out = QRCode.from(text).to(ImageType.PNG).stream();
 
-        Planning P = new Planning(semaine, description);
+	            // Convertir l'image en une chaîne de caractères encodée en base64
+	            String base64Image = Base64.getEncoder().encodeToString(out.toByteArray());
+	            
+	            System.out.println("Base64 avant : " + base64Image);
+	            
+ 	            // Afficher l'image dans une alerte
+	            Alert alert = new Alert(AlertType.INFORMATION);
+	            alert.setTitle("Code QR pour  article " + semaine +description);
+	            alert.setHeaderText(null);
+
+	            // Créer un ImageView avec l'image du code QR encodée en base64
+	            ImageView imageView = new ImageView();
+	            imageView.setImage(new Image(new ByteArrayInputStream(Base64.getDecoder().decode( base64Image))));
+
+	            // Ajouter l'ImageView à la boîte de dialogue de l'alerte
+	            alert.getDialogPane().setContent(imageView);
+
+	            // Afficher l'alerte
+	            alert.showAndWait();
+        Planning P = new Planning(semaine, description,base64Image);
         ServicePlanningCRUD ServiceMenu = new ServicePlanningCRUD();
         ServiceMenu.ajouterPlanning(P);
+        Alert alert1 = new Alert(AlertType.INFORMATION);
+        alert1.setTitle("Confirmation");
+        alert1.setHeaderText(null);
+        alert1.setContentText("Ajouter Planning est avec succers!!!  " );
+        alert1.showAndWait();
         
         try {
 
-            Parent page1= FXMLLoader.load(getClass().getResource("../../gui/Planning/Planning.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+                    
+                root = FXMLLoader.load(getClass().getResource("../../gui/Planning/Planning.fxml"));
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setTitle("ListCours");
+                stage.setScene(scene);
+                stage.show();
           
         } catch (IOException ex) {
-            System.out.println("Erreur\n");
-            Logger.getLogger(PlanningController.class.getName()).log(Level.SEVERE, null, ex);
-
+          
+ 
         }
             
         }
 
                    
     }
-    /*
-       private boolean verifString(TextField chaine) {
- 
-        for (int i = 1; i < chaine.getText().trim().length(); i++) {
-            char ch = chaine.getText().charAt(i);
-            if (Character.isLetter(ch)) {
-                return false;
-            }
-        }
-        return true;
-        
-    }
-*/
+     
         private void showAlert(String message) 
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -191,5 +174,10 @@ public class AjouterPlanningController implements Initializable {
         stage.show();
                 
     }
+        @FXML
+        public void ajouterPlanningBack(ActionEvent event) throws IOException  {
+        
+      
+        }
 }
     

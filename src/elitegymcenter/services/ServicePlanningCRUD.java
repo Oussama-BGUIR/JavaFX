@@ -8,6 +8,9 @@ package elitegymcenter.services;
 import elitegymcenter.entities.Planning;
 
 import elitegymcenter.utils.MyDB;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,52 +26,51 @@ import elitegymcenter.interfaces.PlanningCRUD;
  */
 public class ServicePlanningCRUD implements PlanningCRUD{
     Statement ste;
-    Connection conn = MyDB.getInstance().getConn();
+    Connection conn = MyDB.getInstance().getConnection();
     
     
     
     
     @Override
-    
-
-    
-        public void ajouterPlanning(Planning P) {
+   
+        public void ajouterPlanning(Planning P) throws SQLException{
         try {
-            String req = "INSERT INTO `planning`( `semaine`, `description`) VALUES (?, ?)";
+            String req = "INSERT INTO `planning`( `semaine`, `description`,`image_code_qr`) VALUES (?, ?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement(req);
             preparedStatement.setString(1, P.getSemaine());
             preparedStatement.setString(2, P.getDescription());
+            preparedStatement.setString(3, P.getImage_code_qr());
 
             preparedStatement.executeUpdate();
-            System.out.println("Planning ajout√© avec succ√®s !!!");
-        } catch (SQLException ex) {
-            System.out.println("Malheureusement le planning n'est pas ajout√© .. ");
-            ex.printStackTrace();
-        }
+            System.out.println("Planning ajoute© avec succ√®s !!!");
+        }catch (SQLException ex) {
+      	   System.out.println("errr "+ex);
+        	
+        } 
     }
        
 
           @Override
-        public List<Planning> afficherPlanning() {
-        List<Planning> list = new ArrayList<>();
-        try {
-            String req = "Select * from planning";
-            Statement st = conn.createStatement();
-           
-            ResultSet RS= st.executeQuery(req);
-            while(RS.next()){
-             Planning P = new Planning();
-             P.setId(RS.getInt(1));
-             P.setSemaine(RS.getString(2));
-             P.setDescription(RS.getString(3));
-             list.add(P);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return list;
-    }
+          public ObservableList<Planning>  afficherPlanning() {
+        	  ObservableList<Planning> plannings = FXCollections.observableArrayList();
+        	    try {
+        	        PreparedStatement preparedStatement =  conn.prepareStatement("SELECT * FROM `planning`");
+        	        ResultSet resultSet = preparedStatement.executeQuery();
+        	        while (resultSet.next()) {
+        	            int id = resultSet.getInt("id");
+        	            String semaine = resultSet.getString("semaine");
+        	            String description = resultSet.getString("description");
+        	            String image = resultSet.getString("image_code_qr");
+        	            Planning planning = new Planning(id, semaine, description,image);
+        	            plannings.add(planning);
+        	            System.out.println(planning.toString());
+        	        }
+        	    } catch (SQLException e) {
+        	        e.printStackTrace();
+        	    }
+        	    return plannings;
+        	}
+     
     
   
 
@@ -89,20 +91,19 @@ public class ServicePlanningCRUD implements PlanningCRUD{
     
      @Override
   
-    public void modifierPlanning(Planning P) {
-        try {
-            String req = "UPDATE `Planning` SET `semaine` = ?, `description` = ? WHERE `planning`.`id` = ?";
-            PreparedStatement preparedStatement = conn.prepareStatement(req);
-            preparedStatement.setString(1, P.getSemaine());
-            preparedStatement.setString(2, P.getDescription());
-            preparedStatement.setInt(3, P.getId());
-            preparedStatement.executeUpdate();
-            System.out.println("Le Planning est modifi√© !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
+     public void modifierPlanning(Planning planning) {
+    	    try {
+    	        String req = "UPDATE `planning` SET `semaine` = ?, `description` = ? WHERE `id` = ?";
+    	        PreparedStatement preparedStatement = conn.prepareStatement(req);
+    	        preparedStatement.setString(1, planning.getSemaine());
+    	        preparedStatement.setString(2, planning.getDescription());
+    	        preparedStatement.setInt(3, planning.getId());
+    	        preparedStatement.executeUpdate();
+    	        System.out.println("Le planning a ÈtÈ modifiÈ !");
+    	    } catch (SQLException ex) {
+    	        System.out.println(ex.getMessage());
+    	    }
+    	}
     
 
     
