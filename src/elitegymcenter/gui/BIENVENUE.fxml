@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="740.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.BIENVENUE">
+    <stylesheets>
+        <URL value="@ajoutercategorie.css" />
+    </stylesheets>
+   <children>
+     
+      <AnchorPane layoutX="-4.0" layoutY="-1.0" prefHeight="538.0" prefWidth="158.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="14.0" layoutY="474.0" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="134.0" style="-fx-background-color: #B0F2B6;" text="Logout">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="145.0" fitWidth="128.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/elitegym.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="checknom" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdescription" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="185.0" layoutY="14.0" prefHeight="75.0" prefWidth="507.0" text="Elite Gym Center" textFill="#091d4a">
+         <font>
+            <Font name="Arial Black" size="51.0" />
+         </font>
+      </Label>
+      <Button layoutX="600.0" layoutY="108.0" mnemonicParsing="false" onAction="#EspaceClient" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #2A303D;" text="Produits" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="452.0" layoutY="108.0" mnemonicParsing="false" onAction="#voirfront" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #2A303D;" text="Restaurant" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="296.0" layoutY="108.0" mnemonicParsing="false" onAction="#AbonnementBTN" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #2A303D;" text="Abonnements" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="171.0" layoutY="108.0" mnemonicParsing="false" onAction="#ClientBTN" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #2A303D;" text="Profil" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="241.0" layoutY="168.0" mnemonicParsing="false" onAction="#Rdv" prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: #2A303D;" text="Consultation en ligne" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="459.0" layoutY="168.0" mnemonicParsing="false" onAction="#consultation_cours" prefHeight="38.0" prefWidth="193.0" style="-fx-background-color: #2A303D;" text="Planning des cours" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="233.0" fitWidth="473.0" layoutX="216.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Downloads/giphy.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

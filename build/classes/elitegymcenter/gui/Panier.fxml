@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="537.0" prefWidth="875.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.PanierController">
+    <stylesheets>
+        <URL value="@ajoutermenu.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="537.0" prefWidth="242.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="27.0" layoutY="362.0" mnemonicParsing="false" onAction="#retourFront" prefHeight="38.0" prefWidth="188.0" text="Retour aux Plats" />
+            <Text fill="WHITE" layoutX="35.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Votre Panier">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="286.0" fitWidth="208.0" layoutX="17.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/elitegym.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="menu_removeBtn" layoutX="27.0" layoutY="422.0" mnemonicParsing="false" onAction="#suppplat" prefHeight="34.0" prefWidth="188.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Supprimer Panier" />
+            <Button layoutX="27.0" layoutY="476.0" mnemonicParsing="false" onAction="#menuPrintBtn" prefHeight="34.0" prefWidth="188.0" styleClass="btn" stylesheets="@mainFormDesign.css" text="Imprimer En PDF" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="checknom" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkdescription" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="checkimage" fitHeight="38.0" fitWidth="38.0" layoutX="593.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="image" fitHeight="115.0" fitWidth="142.0" layoutX="392.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="menuTableView" layoutX="263.0" layoutY="118.0" prefHeight="362.0" prefWidth="582.0">
+         <columns>
+            <TableColumn fx:id="menuColPlatName" prefWidth="149.60009765625" text="Plats" />
+            <TableColumn fx:id="menuColPlatQuantite" prefWidth="178.39990234375" text="quantite_commande" />
+            <TableColumn fx:id="menuColPlatPrix" prefWidth="132.800048828125" text="Prix" />
+         </columns>
+      </TableView>
+      <Label fx:id="totalPrix" layoutX="561.0" layoutY="481.0" prefHeight="28.0" prefWidth="85.0" text="\$0.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="481.0" text="Total:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Text fill="#2f3459" layoutX="476.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vos achats">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

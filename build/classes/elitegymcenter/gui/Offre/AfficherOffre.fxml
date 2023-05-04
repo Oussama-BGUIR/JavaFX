@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #B0F2B6;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="elitegymcenter.controllers.Offre.AfficherOffreController">
+    <stylesheets>
+        <URL value="@menu.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="316.0" layoutY="43.0" prefHeight="36.0" prefWidth="222.0" text="Liste des offres">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Label>
+      <AnchorPane prefHeight="600.0" prefWidth="236.0" style="-fx-background-color: #2A303D;">
+         <children>
+            <Button layoutX="45.0" layoutY="110.0" mnemonicParsing="false" onAction="#AjouterOffre" prefHeight="36.0" prefWidth="158.0" text="Ajouter" />
+            <Button layoutX="45.0" layoutY="164.0" mnemonicParsing="false" onAction="#modifierOffre" prefHeight="36.0" prefWidth="158.0" text="Modifier" />
+            <Button layoutX="45.0" layoutY="225.0" mnemonicParsing="false" onAction="#supprimerOffre" prefHeight="36.0" prefWidth="158.0" text="Supprimer" />
+            <Button layoutX="45.0" layoutY="354.0" mnemonicParsing="false" onAction="#StatistiqueOffre" prefHeight="36.0" prefWidth="158.0" text="Statistique" />
+            <Button layoutX="45.0" layoutY="43.0" mnemonicParsing="false" onAction="#retourAdminOffre" prefHeight="36.0" prefWidth="158.0" text="Retour" />
+            
+         </children>
+      </AnchorPane>
+      <Button layoutX="988.0" layoutY="19.0" mnemonicParsing="false" onAction="#listeAbonnements" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: #2A303D;" text="Aller aux Abonnements" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+      <TableView fx:id="affichageOffrefx" layoutX="302.0" layoutY="122.0" prefHeight="432.0" prefWidth="767.0">
+        <columns>
+          <TableColumn fx:id="idfx" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="abonnement_idfx" prefWidth="111.0" text="Abonnement Id" />
+            <TableColumn fx:id="pointsfx" prefWidth="107.0" text="Points" />
+            <TableColumn fx:id="prixfx" prefWidth="115.0" text="Prix" />
+            <TableColumn fx:id="pourcentagefx" prefWidth="111.0" text="Pourcentage" />
+            <TableColumn fx:id="datedebutfx" prefWidth="124.0" text="Date debut" />
+            <TableColumn fx:id="datefinfx" prefWidth="119.0" text="Date fin" />
+        </columns>
+      </TableView>
+      <TextField fx:id="recherchePoints" layoutX="584.0" layoutY="40.0" prefHeight="42.0" prefWidth="352.0" promptText="Recherche Par Points" />
+   </children>
+</AnchorPane>
